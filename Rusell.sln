@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A6016F2C-92DE-47A1-8EC9-1DB924D9AAEB}"
+	ProjectSection(SolutionItems) = preProject
+		src\.gitkeep = src\.gitkeep
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{911A6857-282B-46A8-A375-8AC7CDC719F1}"
+	ProjectSection(SolutionItems) = preProject
+		test\.gitkeep = test\.gitkeep
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{882F1C46-DFA6-46EF-9C93-26C4A0C62D0F}"
+	ProjectSection(SolutionItems) = preProject
+		apps\.gitkeep = apps\.gitkeep
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+EndGlobal
