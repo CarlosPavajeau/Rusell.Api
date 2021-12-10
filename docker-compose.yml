@@ -1,0 +1,7 @@
+version: '3.4'
+
+services:
+  address-api:
+    build:
+      context: .
+      dockerfile: apps/Addresses.Api/Dockerfile
