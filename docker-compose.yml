@@ -5,3 +5,7 @@ services:
     build:
       context: .
       dockerfile: apps/Addresses.Api/Dockerfile
+  companies-api:
+    build:
+      context: .
+      dockerfile: apps/Companies.Api/Dockerfile
