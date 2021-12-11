@@ -1,0 +1,29 @@
+name: .NET
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .Net Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+      - name: restore dependencies
+        run: dotnet restore
+      - name: build
+        run: dotnet build --no-restore -c Release /p:ContinuousIntegrationBuild=true
+      - name: test
+        run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+      - name: codecov
+        uses: codecov/codecov-action@v1
