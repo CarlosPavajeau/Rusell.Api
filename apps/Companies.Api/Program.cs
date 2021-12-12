@@ -1,4 +1,4 @@
-using Companies.Api.Extensions;
+using Rusell.Companies.Api.Extensions;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,3 +31,12 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+#pragma warning disable CA1050 // Declare types in namespaces
+namespace Rusell.Companies.Api
+{
+    public partial class Program
+    {
+    }
+}
+#pragma warning restore CA1050 // Declare types in namespaces

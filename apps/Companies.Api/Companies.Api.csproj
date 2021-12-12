@@ -5,6 +5,8 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <AssemblyName>Rusell.Companies.Api</AssemblyName>
+        <RootNamespace>Rusell.Companies.Api</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

@@ -2,7 +2,7 @@ using Rusell.Companies.Application.Create;
 using Rusell.Companies.Application.Find;
 using Rusell.Companies.Application.FindByNit;
 
-namespace Companies.Api.Extensions;
+namespace Rusell.Companies.Api.Extensions;
 
 public static class Application
 {

@@ -7,7 +7,7 @@ using Rusell.Shared.Domain.Persistence;
 using Rusell.Shared.Helpers;
 using Rusell.Shared.Infrastructure.Persistence;
 
-namespace Companies.Api.Extensions;
+namespace Rusell.Companies.Api.Extensions;
 
 public static class Infrastructure
 {
