@@ -14,6 +14,7 @@ public abstract class InfrastructureTestCase<TStartup> where TStartup : class
 
     protected InfrastructureTestCase()
     {
+        _host = CreateHost();
         Setup();
     }
 
@@ -37,20 +38,20 @@ public abstract class InfrastructureTestCase<TStartup> where TStartup : class
 
     private IHost CreateHost()
     {
-        var hostBuilder = new HostBuilder()
+        var host = Host.CreateDefaultBuilder()
             .ConfigureWebHostDefaults(webHost =>
             {
                 webHost.UseTestServer();
-                webHost.UseStartup<TStartup>();
+                webHost.Configure(config => { });
                 webHost.ConfigureTestServices(Services());
                 webHost.UseConfiguration(Configuration());
             });
 
-        return hostBuilder.Start();
+        return host.Start();
     }
 
-    protected T? GetService<T>()
+    protected T GetService<T>() where T : notnull
     {
-        return _host.Services.GetService<T>();
+        return _host.Services.GetRequiredService<T>();
     }
 }
