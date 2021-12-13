@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Rusell.Companies.Shared.Infrastructure.Persistence.EntityFramework;
 
 #nullable disable
@@ -11,7 +12,7 @@ using Rusell.Companies.Shared.Infrastructure.Persistence.EntityFramework;
 namespace Rusell.Companies.Migrations
 {
     [DbContext(typeof(CompaniesDbContext))]
-    [Migration("20211211201855_Initial")]
+    [Migration("20211213212038_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,12 +20,14 @@ namespace Rusell.Companies.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Rusell.Companies.Domain.Company", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.HasKey("Id")
@@ -38,12 +41,12 @@ namespace Rusell.Companies.Migrations
                     b.OwnsOne("Rusell.Companies.Domain.CompanyInfo", "Info", b1 =>
                         {
                             b1.Property<Guid>("CompanyId")
-                                .HasColumnType("char(36)")
+                                .HasColumnType("uuid")
                                 .HasColumnName("id");
 
                             b1.Property<string>("Value")
                                 .HasMaxLength(256)
-                                .HasColumnType("varchar(256)")
+                                .HasColumnType("character varying(256)")
                                 .HasColumnName("info");
 
                             b1.HasKey("CompanyId");
@@ -58,12 +61,12 @@ namespace Rusell.Companies.Migrations
                     b.OwnsOne("Rusell.Companies.Domain.CompanyName", "Name", b1 =>
                         {
                             b1.Property<Guid>("CompanyId")
-                                .HasColumnType("char(36)")
+                                .HasColumnType("uuid")
                                 .HasColumnName("id");
 
                             b1.Property<string>("Value")
                                 .HasMaxLength(256)
-                                .HasColumnType("varchar(256)")
+                                .HasColumnType("character varying(256)")
                                 .HasColumnName("name");
 
                             b1.HasKey("CompanyId");
@@ -78,19 +81,19 @@ namespace Rusell.Companies.Migrations
                     b.OwnsOne("Rusell.Companies.Domain.Nit", "Nit", b1 =>
                         {
                             b1.Property<Guid>("CompanyId")
-                                .HasColumnType("char(36)")
+                                .HasColumnType("uuid")
                                 .HasColumnName("id");
 
                             b1.Property<string>("Value")
                                 .HasMaxLength(256)
-                                .HasColumnType("varchar(256)")
+                                .HasColumnType("character varying(256)")
                                 .HasColumnName("nit");
 
                             b1.HasKey("CompanyId");
 
                             b1.HasIndex("Value")
                                 .IsUnique()
-                                .HasDatabaseName("ix_companies_nit_value");
+                                .HasDatabaseName("ix_companies_nit");
 
                             b1.ToTable("companies");
 

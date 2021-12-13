@@ -16,10 +16,7 @@ public static class Infrastructure
     {
         services.AddDbContext<CompaniesDbContext>(options =>
         {
-            options.UseMySql(
-                    configuration.GetConnectionString("DefaultConnection"),
-                    new MySqlServerVersion(new Version(8, 0, 26)),
-                    builder => { builder.CommandTimeout((int)TimeSpan.FromMinutes(20).TotalSeconds); })
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
                 .UseSnakeCaseNamingConvention()
                 .EnableDetailedErrors();
         }, ServiceLifetime.Transient);

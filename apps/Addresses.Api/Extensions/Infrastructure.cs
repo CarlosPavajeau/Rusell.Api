@@ -16,18 +16,16 @@ public static class Infrastructure
     {
         services.AddDbContext<AddressesDbContext>(options =>
         {
-            options.UseMySql(
-                    configuration.GetConnectionString("DefaultConnection"),
-                    new MySqlServerVersion(new Version(8, 0, 26)),
-                    builder => { builder.CommandTimeout((int)TimeSpan.FromMinutes(20).TotalSeconds); })
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
                 .UseSnakeCaseNamingConvention()
                 .EnableDetailedErrors();
-        }, ServiceLifetime.Transient);
+        });
+
         services.AddScoped<AddressesDbContext, AddressesDbContext>();
         services.AddScoped<DbContext, AddressesDbContext>();
 
         services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Addresses));
-        services.AddMediatR(typeof(Program));
+        services.AddMediatR(typeof(global::Program));
 
         services.AddScoped<IAddressesRepository, MySqlAddressesRepository>();
         services.AddScoped<IUnitWork, UnitWork>();

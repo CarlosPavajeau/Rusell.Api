@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Rusell.Addresses.Shared.Infrastructure.Persistence.EntityFramework;
 
 #nullable disable
@@ -11,7 +12,7 @@ using Rusell.Addresses.Shared.Infrastructure.Persistence.EntityFramework;
 namespace Rusell.Addresses.Migrations
 {
     [DbContext(typeof(AddressesDbContext))]
-    [Migration("20211210020814_Initial")]
+    [Migration("20211213213137_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,12 +20,14 @@ namespace Rusell.Addresses.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Rusell.Addresses.Domain.Address", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.HasKey("Id")
@@ -38,12 +41,12 @@ namespace Rusell.Addresses.Migrations
                     b.OwnsOne("Rusell.Addresses.Domain.City", "City", b1 =>
                         {
                             b1.Property<Guid>("AddressId")
-                                .HasColumnType("char(36)")
+                                .HasColumnType("uuid")
                                 .HasColumnName("id");
 
                             b1.Property<string>("Value")
                                 .HasMaxLength(256)
-                                .HasColumnType("varchar(256)")
+                                .HasColumnType("character varying(256)")
                                 .HasColumnName("city");
 
                             b1.HasKey("AddressId");
@@ -58,12 +61,12 @@ namespace Rusell.Addresses.Migrations
                     b.OwnsOne("Rusell.Addresses.Domain.Comments", "Comments", b1 =>
                         {
                             b1.Property<Guid>("AddressId")
-                                .HasColumnType("char(36)")
+                                .HasColumnType("uuid")
                                 .HasColumnName("id");
 
                             b1.Property<string>("Value")
                                 .HasMaxLength(256)
-                                .HasColumnType("varchar(256)")
+                                .HasColumnType("character varying(256)")
                                 .HasColumnName("comments");
 
                             b1.HasKey("AddressId");
@@ -78,12 +81,12 @@ namespace Rusell.Addresses.Migrations
                     b.OwnsOne("Rusell.Addresses.Domain.Intersection", "Intersection", b1 =>
                         {
                             b1.Property<Guid>("AddressId")
-                                .HasColumnType("char(36)")
+                                .HasColumnType("uuid")
                                 .HasColumnName("id");
 
                             b1.Property<string>("Value")
                                 .HasMaxLength(256)
-                                .HasColumnType("varchar(256)")
+                                .HasColumnType("character varying(256)")
                                 .HasColumnName("intersection");
 
                             b1.HasKey("AddressId");
@@ -98,12 +101,12 @@ namespace Rusell.Addresses.Migrations
                     b.OwnsOne("Rusell.Addresses.Domain.Neighborhood", "Neighborhood", b1 =>
                         {
                             b1.Property<Guid>("AddressId")
-                                .HasColumnType("char(36)")
+                                .HasColumnType("uuid")
                                 .HasColumnName("id");
 
                             b1.Property<string>("Value")
                                 .HasMaxLength(256)
-                                .HasColumnType("varchar(256)")
+                                .HasColumnType("character varying(256)")
                                 .HasColumnName("neighborhood");
 
                             b1.HasKey("AddressId");
@@ -118,12 +121,12 @@ namespace Rusell.Addresses.Migrations
                     b.OwnsOne("Rusell.Addresses.Domain.State", "State", b1 =>
                         {
                             b1.Property<Guid>("AddressId")
-                                .HasColumnType("char(36)")
+                                .HasColumnType("uuid")
                                 .HasColumnName("id");
 
                             b1.Property<string>("Value")
                                 .HasMaxLength(256)
-                                .HasColumnType("varchar(256)")
+                                .HasColumnType("character varying(256)")
                                 .HasColumnName("state");
 
                             b1.HasKey("AddressId");
@@ -138,12 +141,12 @@ namespace Rusell.Addresses.Migrations
                     b.OwnsOne("Rusell.Addresses.Domain.StreetName", "StreetName", b1 =>
                         {
                             b1.Property<Guid>("AddressId")
-                                .HasColumnType("char(36)")
+                                .HasColumnType("uuid")
                                 .HasColumnName("id");
 
                             b1.Property<string>("Value")
                                 .HasMaxLength(256)
-                                .HasColumnType("varchar(256)")
+                                .HasColumnType("character varying(256)")
                                 .HasColumnName("street_name");
 
                             b1.HasKey("AddressId");
@@ -158,12 +161,12 @@ namespace Rusell.Addresses.Migrations
                     b.OwnsOne("Rusell.Addresses.Domain.StreetNumber", "StreetNumber", b1 =>
                         {
                             b1.Property<Guid>("AddressId")
-                                .HasColumnType("char(36)")
+                                .HasColumnType("uuid")
                                 .HasColumnName("id");
 
                             b1.Property<string>("Value")
                                 .HasMaxLength(256)
-                                .HasColumnType("varchar(256)")
+                                .HasColumnType("character varying(256)")
                                 .HasColumnName("street_number");
 
                             b1.HasKey("AddressId");
