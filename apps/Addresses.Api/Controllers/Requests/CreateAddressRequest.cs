@@ -1,4 +1,4 @@
-namespace Addresses.Api.Controllers.Requests;
+namespace Rusell.Addresses.Api.Controllers.Requests;
 
 public class CreateAddressRequest
 {

@@ -1,14 +1,14 @@
-using Addresses.Api.Controllers.Requests;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Rusell.Addresses.Api.Controllers.Requests;
 using Rusell.Addresses.Application;
 using Rusell.Addresses.Application.Create;
 using Rusell.Addresses.Application.Find;
 using Rusell.Addresses.Application.SearchAll;
 
-namespace Addresses.Api.Controllers;
+namespace Rusell.Addresses.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

@@ -2,7 +2,7 @@ using Rusell.Addresses.Application.Create;
 using Rusell.Addresses.Application.Find;
 using Rusell.Addresses.Application.SearchAll;
 
-namespace Addresses.Api.Extensions;
+namespace Rusell.Addresses.Api.Extensions;
 
 public static class Application
 {

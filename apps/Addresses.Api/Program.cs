@@ -1,4 +1,4 @@
-using Addresses.Api.Extensions;
+using Rusell.Addresses.Api.Extensions;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
