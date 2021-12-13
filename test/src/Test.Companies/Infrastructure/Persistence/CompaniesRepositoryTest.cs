@@ -76,4 +76,23 @@ public class CompaniesRepositoryTest : CompaniesContextInfrastructureTestCase
 
         result.Should().BeNull();
     }
+
+    [Fact]
+    public async Task Any_ShouldReturnTrue()
+    {
+        var companyName = WordMother.Random();
+        var company = new Company
+        {
+            Id = CompanyId.From(Guid.NewGuid()),
+            Name = companyName,
+            Nit = WordMother.Random(),
+            Info = WordMother.Random()
+        };
+
+        await Repository.Save(company);
+
+        var result = await Repository.Any(c => c.Name.Value == companyName);
+
+        result.Should().BeTrue();
+    }
 }
