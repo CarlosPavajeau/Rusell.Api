@@ -267,6 +267,7 @@ testem.log
 coveragereport/*
 coveragerepor
 */Coverage/*
+coverage.*.xml
 .sonarqube/*
 .sonarqube
 sonar-project.properties
