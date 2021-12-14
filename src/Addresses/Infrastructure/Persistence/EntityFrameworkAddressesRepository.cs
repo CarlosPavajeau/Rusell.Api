@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Rusell.Addresses.Domain;
+using Rusell.Shared.Domain.ValueObject;
 using Rusell.Shared.Infrastructure.Repository;
 
 namespace Rusell.Addresses.Infrastructure.Persistence;
@@ -15,5 +16,13 @@ public class EntityFrameworkAddressesRepository : Repository<Address, AddressId>
         var query = noTracking ? Context.Set<Address>().AsNoTracking() : Context.Set<Address>().AsTracking();
 
         return await query.FirstOrDefaultAsync(a => a.Id == key);
+    }
+
+    public async Task<IEnumerable<Address>> SearchAllByUser(UserId userId)
+    {
+        return await Context.Set<Address>()
+            .AsNoTracking()
+            .Where(a => a.UserId.Value == userId.Value)
+            .ToListAsync();
     }
 }

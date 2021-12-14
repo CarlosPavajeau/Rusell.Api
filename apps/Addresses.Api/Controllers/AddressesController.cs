@@ -8,7 +8,7 @@ using Rusell.Addresses.Api.Controllers.Requests;
 using Rusell.Addresses.Application;
 using Rusell.Addresses.Application.Create;
 using Rusell.Addresses.Application.Find;
-using Rusell.Addresses.Application.SearchAll;
+using Rusell.Addresses.Application.SearchAllByUser;
 
 namespace Rusell.Addresses.Api.Controllers;
 
@@ -29,7 +29,11 @@ public class AddressesController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AddressResponse>>> GetAddresses()
     {
-        var addresses = await _mediator.Send(new SearchAllAddressesQuery());
+        var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        if (userId is null)
+            return Unauthorized();
+
+        var addresses = await _mediator.Send(new SearchAllAddressesByUserQuery(userId));
         return Ok(addresses);
     }
 
