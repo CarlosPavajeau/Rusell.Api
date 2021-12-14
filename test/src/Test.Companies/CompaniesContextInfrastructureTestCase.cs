@@ -37,7 +37,7 @@ public class CompaniesContextInfrastructureTestCase : InfrastructureTestCase<Pro
 
             services.AddScoped<CompaniesDbContext, CompaniesDbContext>();
             services.AddScoped<DbContext, CompaniesDbContext>();
-            services.AddScoped<ICompaniesRepository, MySqlCompaniesRepository>();
+            services.AddScoped<ICompaniesRepository, EntityFrameworkCompaniesRepository>();
         };
     }
 }

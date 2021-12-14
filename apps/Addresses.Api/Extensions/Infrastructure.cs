@@ -31,7 +31,7 @@ public static class Infrastructure
         services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Addresses));
         services.AddMediatR(typeof(global::Program));
 
-        services.AddScoped<IAddressesRepository, MySqlAddressesRepository>();
+        services.AddScoped<IAddressesRepository, EntityFrameworkAddressesRepository>();
         services.AddScoped<IUnitWork, UnitWork>();
 
         return services;

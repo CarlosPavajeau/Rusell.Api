@@ -4,9 +4,9 @@ using Rusell.Shared.Infrastructure.Repository;
 
 namespace Rusell.Companies.Infrastructure.Persistence;
 
-public class MySqlCompaniesRepository : Repository<Company, CompanyId>, ICompaniesRepository
+public class EntityFrameworkCompaniesRepository : Repository<Company, CompanyId>, ICompaniesRepository
 {
-    public MySqlCompaniesRepository(DbContext context) : base(context)
+    public EntityFrameworkCompaniesRepository(DbContext context) : base(context)
     {
     }
 

@@ -4,9 +4,9 @@ using Rusell.Shared.Infrastructure.Repository;
 
 namespace Rusell.Addresses.Infrastructure.Persistence;
 
-public class MySqlAddressesRepository : Repository<Address, AddressId>, IAddressesRepository
+public class EntityFrameworkAddressesRepository : Repository<Address, AddressId>, IAddressesRepository
 {
-    public MySqlAddressesRepository(DbContext context) : base(context)
+    public EntityFrameworkAddressesRepository(DbContext context) : base(context)
     {
     }
 

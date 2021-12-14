@@ -37,7 +37,7 @@ public class AddressesContextInfrastructureTestCase : InfrastructureTestCase<Pro
 
             services.AddScoped<AddressesDbContext, AddressesDbContext>();
             services.AddScoped<DbContext, AddressesDbContext>();
-            services.AddScoped<IAddressesRepository, MySqlAddressesRepository>();
+            services.AddScoped<IAddressesRepository, EntityFrameworkAddressesRepository>();
         };
     }
 }
