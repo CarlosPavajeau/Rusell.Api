@@ -32,5 +32,13 @@ public class CompanyConfiguration : IEntityTypeConfiguration<Company>
             .Property(x => x.Value)
             .HasMaxLength(256)
             .HasColumnName(nameof(Company.Info).ToDatabaseFormat());
+
+        builder.OwnsOne(x => x.UserId)
+            .Property(x => x.Value)
+            .HasMaxLength(256)
+            .HasColumnName(nameof(Company.UserId).ToDatabaseFormat());
+
+        builder.OwnsOne(x => x.UserId)
+            .HasIndex(x => x.Value);
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Rusell.Companies.Shared.Infrastructure.Persistence.EntityFramework;
@@ -11,9 +12,10 @@ using Rusell.Companies.Shared.Infrastructure.Persistence.EntityFramework;
 namespace Rusell.Companies.Migrations
 {
     [DbContext(typeof(CompaniesDbContext))]
-    partial class CompaniesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211213233935_AddUserId")]
+    partial class AddUserId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

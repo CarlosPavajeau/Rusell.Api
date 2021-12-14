@@ -1,3 +1,4 @@
+using Rusell.Shared.Domain;
 using Rusell.Shared.Domain.Aggregate;
 
 namespace Rusell.Companies.Domain;
@@ -13,4 +14,6 @@ public class Company : AggregateRoot
     public CompanyName Name { get; set; }
     public Nit? Nit { get; set; }
     public CompanyInfo Info { get; set; }
+
+    public UserId UserId { get; set; }
 }
