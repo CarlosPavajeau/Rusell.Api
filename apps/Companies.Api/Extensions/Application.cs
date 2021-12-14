@@ -6,12 +6,12 @@ namespace Rusell.Companies.Api.Extensions;
 
 public static class Application
 {
-  public static IServiceCollection AddApplication(this IServiceCollection services)
-  {
-    services.AddScoped<CompanyCreator, CompanyCreator>();
-    services.AddScoped<CompanyFinder, CompanyFinder>();
-    services.AddScoped<CompanyByNitFinder, CompanyByNitFinder>();
+    public static IServiceCollection AddApplication(this IServiceCollection services)
+    {
+        services.AddScoped<CompanyCreator, CompanyCreator>();
+        services.AddScoped<CompanyFinder, CompanyFinder>();
+        services.AddScoped<CompanyByNitFinder, CompanyByNitFinder>();
 
-    return services;
-  }
+        return services;
+    }
 }

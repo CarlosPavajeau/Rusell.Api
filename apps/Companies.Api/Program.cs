@@ -4,13 +4,13 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
 Log.Logger = new LoggerConfiguration()
-  .ReadFrom.Configuration(builder.Configuration)
-  .CreateLogger();
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
 builder.Host.UseSerilog();
 
 builder.Services
-  .AddInfrastructure(builder.Configuration)
-  .AddApplication();
+    .AddInfrastructure(builder.Configuration)
+    .AddApplication();
 builder.Services.AddRouting(options => { options.LowercaseUrls = true; });
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -20,8 +20,8 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-  app.UseSwagger();
-  app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
@@ -36,8 +36,8 @@ app.Run();
 #pragma warning disable CA1050 // Declare types in namespaces
 namespace Rusell.Companies.Api
 {
-  public class Program
-  {
-  }
+    public class Program
+    {
+    }
 }
 #pragma warning restore CA1050 // Declare types in namespaces

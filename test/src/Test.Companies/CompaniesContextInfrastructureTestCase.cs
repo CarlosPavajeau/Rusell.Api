@@ -14,30 +14,30 @@ namespace Rusell.Test.Companies;
 
 public class CompaniesContextInfrastructureTestCase : InfrastructureTestCase<Program>
 {
-  protected override void Setup()
-  {
-  }
-
-  protected override Action<IServiceCollection> Services()
-  {
-    return services =>
+    protected override void Setup()
     {
-      var descriptor =
-        services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<CompaniesDbContext>));
-      if (descriptor is not null) services.Remove(descriptor);
+    }
 
-      services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Companies));
+    protected override Action<IServiceCollection> Services()
+    {
+        return services =>
+        {
+            var descriptor =
+                services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<CompaniesDbContext>));
+            if (descriptor is not null) services.Remove(descriptor);
 
-      var serviceProvider = services.AddEntityFrameworkInMemoryDatabase().BuildServiceProvider();
-      services.AddDbContext<CompaniesDbContext>(options =>
-      {
-        options.UseInMemoryDatabase(Guid.NewGuid().ToString());
-        options.UseInternalServiceProvider(serviceProvider);
-      });
+            services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Companies));
 
-      services.AddScoped<CompaniesDbContext, CompaniesDbContext>();
-      services.AddScoped<DbContext, CompaniesDbContext>();
-      services.AddScoped<ICompaniesRepository, MySqlCompaniesRepository>();
-    };
-  }
+            var serviceProvider = services.AddEntityFrameworkInMemoryDatabase().BuildServiceProvider();
+            services.AddDbContext<CompaniesDbContext>(options =>
+            {
+                options.UseInMemoryDatabase(Guid.NewGuid().ToString());
+                options.UseInternalServiceProvider(serviceProvider);
+            });
+
+            services.AddScoped<CompaniesDbContext, CompaniesDbContext>();
+            services.AddScoped<DbContext, CompaniesDbContext>();
+            services.AddScoped<ICompaniesRepository, MySqlCompaniesRepository>();
+        };
+    }
 }

@@ -5,16 +5,16 @@ namespace Rusell.Companies.Application.Find;
 
 public class FindCompanyQueryHandler : IQueryHandler<FindCompanyQuery, CompanyResponse>
 {
-  private readonly CompanyFinder _finder;
+    private readonly CompanyFinder _finder;
 
-  public FindCompanyQueryHandler(CompanyFinder finder)
-  {
-    _finder = finder;
-  }
+    public FindCompanyQueryHandler(CompanyFinder finder)
+    {
+        _finder = finder;
+    }
 
-  public async Task<CompanyResponse> Handle(FindCompanyQuery request, CancellationToken cancellationToken)
-  {
-    var company = await _finder.Find(request.Id);
-    return company.Adapt<CompanyResponse>();
-  }
+    public async Task<CompanyResponse> Handle(FindCompanyQuery request, CancellationToken cancellationToken)
+    {
+        var company = await _finder.Find(request.Id);
+        return company.Adapt<CompanyResponse>();
+    }
 }

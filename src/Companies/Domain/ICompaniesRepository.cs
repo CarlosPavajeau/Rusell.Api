@@ -4,5 +4,5 @@ namespace Rusell.Companies.Domain;
 
 public interface ICompaniesRepository : IRepository<Company, CompanyId>
 {
-  Task<Company?> FindByNit(string nit);
+    Task<Company?> FindByNit(string nit);
 }

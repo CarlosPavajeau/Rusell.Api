@@ -1,14 +1,15 @@
 root = true
-# Editor configuration, see http://editorconfig.org
 
 [*]
 charset = utf-8
 indent_style = space
-indent_size = 4
 insert_final_newline = false
 trim_trailing_whitespace = false
 
-# Microsoft .NET properties
+[*.cs]
+indent_size = 4
+dotnet_sort_system_directives_first = true
+csharp_using_directive_placement = outside_namespace:silent
 csharp_new_line_before_members_in_object_initializers = false
 csharp_preferred_modifier_order = public, private, protected, internal, new, abstract, virtual, sealed, override, static, readonly, extern, unsafe, volatile, async:suggestion
 csharp_space_after_cast = true
@@ -42,15 +43,19 @@ resharper_web_config_wrong_module_highlighting = warning
 [*.md]
 max_line_length = off
 
-[*.cs]
-dotnet_sort_system_directives_first = true
-
-[*.{appxmanifest,asax,ascx,aspx,axaml,build,cg,cginc,compute,cs,cshtml,dtd,fs,fsi,fsscript,fsx,hlsl,hlsli,hlslinc,master,ml,mli,nuspec,paml,razor,resw,resx,shader,skin,usf,ush,vb,xaml,xamlx,xoml,xsd}]
-indent_size = 2
-tab_width = 2
-
-[{*.har,*.inputactions,*.jsb2,*.jsb3,*.json,.babelrc,.eslintrc,.stylelintrc,bowerrc,jest.config}]
+[*.{xml,config,*proj,nuspec,props,resx,targets,yml,tasks}]
 indent_size = 2
 
-[{*.yaml,*.yml}]
+# Xml config files
+[*.{props,targets,ruleset,config,nuspec,resx,vsixmanifest,vsct}]
 indent_size = 2
+
+[*.json]
+indent_size = 2
+
+[*.{ps1,psm1}]
+indent_size = 4
+
+[*.sh]
+indent_size = 4
+end_of_line = lf

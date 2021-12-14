@@ -5,10 +5,10 @@ namespace Rusell.Test.Shared.Infrastructure;
 
 public abstract class UnitTestCase
 {
-  protected readonly Mock<IMediator> Mediator;
+    protected readonly Mock<IMediator> Mediator;
 
-  protected UnitTestCase()
-  {
-    Mediator = new Mock<IMediator>();
-  }
+    protected UnitTestCase()
+    {
+        Mediator = new Mock<IMediator>();
+    }
 }

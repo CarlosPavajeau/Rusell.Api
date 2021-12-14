@@ -13,45 +13,45 @@ namespace Rusell.Companies.Api.Extensions;
 
 public static class Infrastructure
 {
-  public static IServiceCollection AddInfrastructure(this IServiceCollection services,
-    IConfiguration configuration)
-  {
-    services.AddBearerTokenAuthentication(configuration);
-
-    services.AddDbContext<CompaniesDbContext>(options =>
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services,
+        IConfiguration configuration)
     {
-      options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
-        .UseSnakeCaseNamingConvention()
-        .EnableDetailedErrors();
-    }, ServiceLifetime.Transient);
+        services.AddBearerTokenAuthentication(configuration);
 
-    services.AddScoped<CompaniesDbContext, CompaniesDbContext>();
-    services.AddScoped<DbContext, CompaniesDbContext>();
-
-    services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Companies));
-    services.AddMediatR(typeof(Program));
-
-    services.AddScoped<ICompaniesRepository, MySqlCompaniesRepository>();
-    services.AddScoped<IUnitWork, UnitWork>();
-
-    return services;
-  }
-
-  private static IServiceCollection AddBearerTokenAuthentication(this IServiceCollection services,
-    IConfiguration configuration)
-  {
-    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-      .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
-        c =>
+        services.AddDbContext<CompaniesDbContext>(options =>
         {
-          c.Authority = $"https://{configuration["Auth0:Domain"]}/";
-          c.TokenValidationParameters = new TokenValidationParameters
-          {
-            ValidAudience = configuration["Auth0:Audience"],
-            ValidIssuer = $"{configuration["Auth0:Domain"]}"
-          };
-        });
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
+                .UseSnakeCaseNamingConvention()
+                .EnableDetailedErrors();
+        }, ServiceLifetime.Transient);
 
-    return services;
-  }
+        services.AddScoped<CompaniesDbContext, CompaniesDbContext>();
+        services.AddScoped<DbContext, CompaniesDbContext>();
+
+        services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Companies));
+        services.AddMediatR(typeof(Program));
+
+        services.AddScoped<ICompaniesRepository, MySqlCompaniesRepository>();
+        services.AddScoped<IUnitWork, UnitWork>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddBearerTokenAuthentication(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
+                c =>
+                {
+                    c.Authority = $"https://{configuration["Auth0:Domain"]}/";
+                    c.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidAudience = configuration["Auth0:Audience"],
+                        ValidIssuer = $"{configuration["Auth0:Domain"]}"
+                    };
+                });
+
+        return services;
+    }
 }

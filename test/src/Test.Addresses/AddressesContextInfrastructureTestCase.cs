@@ -14,30 +14,30 @@ namespace Test.Addresses;
 
 public class AddressesContextInfrastructureTestCase : InfrastructureTestCase<Program>
 {
-  protected override void Setup()
-  {
-  }
-
-  protected override Action<IServiceCollection> Services()
-  {
-    return services =>
+    protected override void Setup()
     {
-      var descriptor =
-        services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<AddressesDbContext>));
-      if (descriptor is not null) services.Remove(descriptor);
+    }
 
-      services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Addresses));
+    protected override Action<IServiceCollection> Services()
+    {
+        return services =>
+        {
+            var descriptor =
+                services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<AddressesDbContext>));
+            if (descriptor is not null) services.Remove(descriptor);
 
-      var serviceProvider = services.AddEntityFrameworkInMemoryDatabase().BuildServiceProvider();
-      services.AddDbContext<AddressesDbContext>(options =>
-      {
-        options.UseInMemoryDatabase(Guid.NewGuid().ToString());
-        options.UseInternalServiceProvider(serviceProvider);
-      });
+            services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Addresses));
 
-      services.AddScoped<AddressesDbContext, AddressesDbContext>();
-      services.AddScoped<DbContext, AddressesDbContext>();
-      services.AddScoped<IAddressesRepository, MySqlAddressesRepository>();
-    };
-  }
+            var serviceProvider = services.AddEntityFrameworkInMemoryDatabase().BuildServiceProvider();
+            services.AddDbContext<AddressesDbContext>(options =>
+            {
+                options.UseInMemoryDatabase(Guid.NewGuid().ToString());
+                options.UseInternalServiceProvider(serviceProvider);
+            });
+
+            services.AddScoped<AddressesDbContext, AddressesDbContext>();
+            services.AddScoped<DbContext, AddressesDbContext>();
+            services.AddScoped<IAddressesRepository, MySqlAddressesRepository>();
+        };
+    }
 }
