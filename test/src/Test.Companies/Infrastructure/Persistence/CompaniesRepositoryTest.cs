@@ -61,6 +61,7 @@ public class CompaniesRepositoryTest : CompaniesContextInfrastructureTestCase
 
         var result = await Repository.Find(company.Id);
 
+        result.Should().NotBeNull();
         company.Id.Should().Be(result.Id);
     }
 

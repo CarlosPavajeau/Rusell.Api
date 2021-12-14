@@ -21,7 +21,7 @@ public class FindCompanyQueryHandlerTest : CompaniesUnitTestCase
         _handler = new FindCompanyQueryHandler(new CompanyFinder(Repository.Object));
 
         Repository.Setup(x => x.Find(_companyIdFound)).ReturnsAsync(new Company());
-        Repository.Setup(x => x.Find(_companyIdNotFound)).ReturnsAsync((Company) null);
+        Repository.Setup(x => x.Find(_companyIdNotFound)).ReturnsAsync((Company?) null);
     }
 
     [Fact]
