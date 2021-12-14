@@ -17,6 +17,7 @@ public class AddressesRepositoryTest : AddressesContextInfrastructureTestCase
         var address = new Address
         {
             Id = AddressId.From(Guid.NewGuid()),
+            Country = WordMother.Random(),
             State = WordMother.Random(),
             City = WordMother.Random(),
             Neighborhood = WordMother.Random(),
@@ -35,6 +36,7 @@ public class AddressesRepositoryTest : AddressesContextInfrastructureTestCase
         var address = new Address
         {
             Id = AddressId.From(Guid.NewGuid()),
+            Country = WordMother.Random(),
             State = WordMother.Random(),
             City = WordMother.Random(),
             Neighborhood = WordMother.Random(),
@@ -57,6 +59,7 @@ public class AddressesRepositoryTest : AddressesContextInfrastructureTestCase
         var address = new Address
         {
             Id = AddressId.From(Guid.NewGuid()),
+            Country = WordMother.Random(),
             State = WordMother.Random(),
             City = WordMother.Random(),
             Neighborhood = WordMother.Random(),

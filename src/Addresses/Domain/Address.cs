@@ -11,6 +11,7 @@ public class Address : AggregateRoot
     }
 
     public AddressId Id { get; set; }
+    public Country Country { get; set; }
     public State State { get; set; }
     public City City { get; set; }
 

@@ -2,6 +2,7 @@ namespace Rusell.Addresses.Api.Controllers.Requests;
 
 public class CreateAddressRequest
 {
+    public string Country { get; set; }
     public string State { get; set; }
     public string City { get; set; }
     public string? Neighborhood { get; set; }

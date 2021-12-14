@@ -14,6 +14,11 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
         builder.Property(x => x.Id)
             .HasConversion(v => v.Value, v => AddressId.From(v));
 
+        builder.OwnsOne(x => x.Country)
+            .Property(x => x.Value)
+            .HasMaxLength(256)
+            .HasColumnName(nameof(Address.Country).ToDatabaseFormat());
+
         builder.OwnsOne(x => x.State)
             .Property(x => x.Value)
             .HasMaxLength(256)
