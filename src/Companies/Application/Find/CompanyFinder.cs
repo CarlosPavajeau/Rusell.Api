@@ -11,5 +11,5 @@ public class CompanyFinder
         _repository = repository;
     }
 
-    public async Task<Company> Find(string id) => await _repository.Find(CompanyId.From(Guid.Parse(id)));
+    public async Task<Company?> Find(string id) => await _repository.Find(CompanyId.From(Guid.Parse(id)));
 }

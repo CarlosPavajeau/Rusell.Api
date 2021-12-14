@@ -3,7 +3,7 @@ using Rusell.Shared.Domain.Bus.Query;
 
 namespace Rusell.Companies.Application.Find;
 
-public class FindCompanyQueryHandler : IQueryHandler<FindCompanyQuery, CompanyResponse>
+public class FindCompanyQueryHandler : IQueryHandler<FindCompanyQuery, CompanyResponse?>
 {
     private readonly CompanyFinder _finder;
 
@@ -12,9 +12,9 @@ public class FindCompanyQueryHandler : IQueryHandler<FindCompanyQuery, CompanyRe
         _finder = finder;
     }
 
-    public async Task<CompanyResponse> Handle(FindCompanyQuery request, CancellationToken cancellationToken)
+    public async Task<CompanyResponse?> Handle(FindCompanyQuery request, CancellationToken cancellationToken)
     {
         var company = await _finder.Find(request.Id);
-        return company.Adapt<CompanyResponse>();
+        return company?.Adapt<CompanyResponse>();
     }
 }
