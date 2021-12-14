@@ -1,5 +1,8 @@
+using System.Security.Claims;
 using Mapster;
+using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rusell.Companies.Api.Controllers.Requests;
@@ -11,11 +14,12 @@ using Rusell.Companies.Application.FindByNit;
 namespace Rusell.Companies.Api.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class CompaniesController : ControllerBase
 {
-    private readonly IMediator _mediator;
     private readonly ILogger<CompaniesController> _logger;
+    private readonly IMediator _mediator;
 
     public CompaniesController(IMediator mediator, ILogger<CompaniesController> logger)
     {
@@ -27,10 +31,7 @@ public class CompaniesController : ControllerBase
     public async Task<ActionResult<CompanyResponse>> GetCompany(string id)
     {
         var company = await _mediator.Send(new FindCompanyQuery(id));
-        if (company is null)
-        {
-            return NotFound();
-        }
+        if (company is null) return NotFound();
 
         return Ok(company);
     }
@@ -39,10 +40,7 @@ public class CompaniesController : ControllerBase
     public async Task<ActionResult<CompanyResponse>> GetCompanyByNit(string nit)
     {
         var company = await _mediator.Send(new FindCompanyByNitQuery(nit));
-        if (company is null)
-        {
-            return NotFound();
-        }
+        if (company is null) return NotFound();
 
         return Ok(company);
     }
@@ -52,7 +50,12 @@ public class CompaniesController : ControllerBase
     {
         try
         {
+            var commandUserId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (commandUserId is null)
+                return Unauthorized();
+
             var command = request.Adapt<CreateCompanyCommand>();
+            command.UserId = commandUserId;
             await _mediator.Send(command);
         }
         catch (DbUpdateException e)

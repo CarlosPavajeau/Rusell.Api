@@ -1,5 +1,7 @@
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Rusell.Companies.Domain;
 using Rusell.Companies.Infrastructure.Persistence;
 using Rusell.Companies.Shared.Infrastructure.Persistence.EntityFramework;
@@ -14,6 +16,8 @@ public static class Infrastructure
     public static IServiceCollection AddInfrastructure(this IServiceCollection services,
         IConfiguration configuration)
     {
+        services.AddBearerTokenAuthentication(configuration);
+
         services.AddDbContext<CompaniesDbContext>(options =>
         {
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
@@ -29,6 +33,24 @@ public static class Infrastructure
 
         services.AddScoped<ICompaniesRepository, MySqlCompaniesRepository>();
         services.AddScoped<IUnitWork, UnitWork>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddBearerTokenAuthentication(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
+                c =>
+                {
+                    c.Authority = $"https://{configuration["Auth0:Domain"]}/";
+                    c.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidAudience = configuration["Auth0:Audience"],
+                        ValidIssuer = $"{configuration["Auth0:Domain"]}",
+                    };
+                });
 
         return services;
     }
