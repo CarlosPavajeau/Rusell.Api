@@ -2,10 +2,12 @@ version: '3.4'
 
 services:
   address-api:
+    image: cantte/rusell.address-api
     build:
       context: .
       dockerfile: apps/Addresses.Api/Dockerfile
   companies-api:
+    image: cantte/rusell.companies-api
     build:
       context: .
       dockerfile: apps/Companies.Api/Dockerfile

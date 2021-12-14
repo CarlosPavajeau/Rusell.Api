@@ -8,8 +8,13 @@ WORKDIR /src
 COPY Rusell.sln Rusell.sln
 
 COPY "src/Addresses/Addresses.csproj" "src/Addresses/Addresses.csproj"
-COPY "src/Shared/Shared.csproj" "src/Shared/Shared.csproj"
 COPY "apps/Addresses.Api/Addresses.Api.csproj" "apps/Addresses.Api/Addresses.Api.csproj"
+COPY "src/Companies/Companies.csproj" "src/Companies/Companies.csproj"
+COPY "apps/Companies.Api/Companies.Api.csproj" "apps/Companies.Api/Companies.Api.csproj"
+COPY "src/Shared/Shared.csproj" "src/Shared/Shared.csproj"
+COPY "test/src/Test.Shared/Test.Shared.csproj" "test/src/Test.Shared/Test.Shared.csproj"
+COPY "test/src/Test.Addresses/Test.Addresses.csproj" "test/src/Test.Addresses/Test.Addresses.csproj"
+COPY "test/src/Test.Companies/Test.Companies.csproj" "test/src/Test.Companies/Test.Companies.csproj"
 
 RUN dotnet restore "Rusell.sln"
 
