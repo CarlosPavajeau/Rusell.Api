@@ -1,4 +1,5 @@
 using Rusell.Shared.Domain.Aggregate;
+using Rusell.Shared.Domain.ValueObject;
 
 namespace Rusell.Addresses.Domain;
 
@@ -18,4 +19,6 @@ public class Address : AggregateRoot
     public Intersection Intersection { get; set; }
     public StreetNumber StreetNumber { get; set; }
     public Comments? Comments { get; set; }
+
+    public UserId UserId { get; set; }
 }

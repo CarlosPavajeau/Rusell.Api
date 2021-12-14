@@ -48,5 +48,13 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
             .Property(x => x.Value)
             .HasMaxLength(256)
             .HasColumnName(nameof(Address.Comments).ToDatabaseFormat());
+
+        builder.OwnsOne(x => x.UserId)
+            .Property(x => x.Value)
+            .HasMaxLength(256)
+            .HasColumnName(nameof(Address.UserId).ToDatabaseFormat());
+
+        builder.OwnsOne(x => x.UserId)
+            .HasIndex(x => x.Value);
     }
 }
