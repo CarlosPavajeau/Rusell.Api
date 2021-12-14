@@ -1,5 +1,7 @@
+using System.Security.Claims;
 using Mapster;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rusell.Addresses.Api.Controllers.Requests;
@@ -11,6 +13,7 @@ using Rusell.Addresses.Application.SearchAll;
 namespace Rusell.Addresses.Api.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class AddressesController : ControllerBase
 {
