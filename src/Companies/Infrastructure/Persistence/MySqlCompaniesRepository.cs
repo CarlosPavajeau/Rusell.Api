@@ -10,7 +10,7 @@ public class MySqlCompaniesRepository : Repository<Company, CompanyId>, ICompani
     {
     }
 
-    public override async Task<Company> Find(CompanyId key, bool noTracking)
+    public override async Task<Company?> Find(CompanyId key, bool noTracking)
     {
         var query = noTracking ? Context.Set<Company>().AsNoTracking() : Context.Set<Company>().AsTracking();
 

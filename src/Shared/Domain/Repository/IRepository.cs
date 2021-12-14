@@ -25,7 +25,7 @@ public interface IRepository<TEntity, in TKey> where TEntity : class
     ///     A task that represents the asynchronous operation
     ///     The task result contains the entity entry
     /// </returns>
-    Task<TEntity> Find(TKey key, bool noTracking);
+    Task<TEntity?> Find(TKey key, bool noTracking);
 
     /// <summary>
     ///     Find the entity entry by primary key.
@@ -35,7 +35,7 @@ public interface IRepository<TEntity, in TKey> where TEntity : class
     ///     A task that represents the asynchronous operation
     ///     The task result contains the entity entry
     /// </returns>
-    Task<TEntity> Find(TKey key);
+    Task<TEntity?> Find(TKey key);
 
     /// <summary>
     ///     Determines whether any element oA function to test each element for a condition.f a sequence satisfies a condition.

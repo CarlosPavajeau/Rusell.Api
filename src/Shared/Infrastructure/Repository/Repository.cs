@@ -19,9 +19,9 @@ public abstract class Repository<TEntity, TKey> : IRepository<TEntity, TKey> whe
         await Context.SaveChangesAsync();
     }
 
-    public abstract Task<TEntity> Find(TKey key, bool noTracking);
+    public abstract Task<TEntity?> Find(TKey key, bool noTracking);
 
-    public async Task<TEntity> Find(TKey key) => await Find(key, true);
+    public async Task<TEntity?> Find(TKey key) => await Find(key, true);
 
     public async Task<bool> Any(Expression<Func<TEntity, bool>> predicate) =>
         await Context.Set<TEntity>().AnyAsync(predicate);

@@ -10,7 +10,7 @@ public class MySqlAddressesRepository : Repository<Address, AddressId>, IAddress
     {
     }
 
-    public override async Task<Address> Find(AddressId key, bool noTracking)
+    public override async Task<Address?> Find(AddressId key, bool noTracking)
     {
         var query = noTracking ? Context.Set<Address>().AsNoTracking() : Context.Set<Address>().AsTracking();
 
