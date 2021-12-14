@@ -11,5 +11,5 @@ public class AddressFinder
         _repository = repository;
     }
 
-    public async Task<Address> Find(string id) => await _repository.Find(AddressId.From(Guid.Parse(id)));
+    public async Task<Address?> Find(string id) => await _repository.Find(AddressId.From(Guid.Parse(id)));
 }

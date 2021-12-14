@@ -3,7 +3,7 @@ using Rusell.Shared.Domain.Bus.Query;
 
 namespace Rusell.Addresses.Application.Find;
 
-public class FindAddressQueryHandler : IQueryHandler<FindAddressQuery, AddressResponse>
+public class FindAddressQueryHandler : IQueryHandler<FindAddressQuery, AddressResponse?>
 {
     private readonly AddressFinder _finder;
 
@@ -12,9 +12,9 @@ public class FindAddressQueryHandler : IQueryHandler<FindAddressQuery, AddressRe
         _finder = finder;
     }
 
-    public async Task<AddressResponse> Handle(FindAddressQuery request, CancellationToken cancellationToken)
+    public async Task<AddressResponse?> Handle(FindAddressQuery request, CancellationToken cancellationToken)
     {
         var address = await _finder.Find(request.Id);
-        return address.Adapt<AddressResponse>();
+        return address?.Adapt<AddressResponse>();
     }
 }
