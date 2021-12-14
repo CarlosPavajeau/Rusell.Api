@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Rusell.Addresses.Domain;
+using Rusell.Shared.Domain.ValueObject;
 using Rusell.Test.Shared.Domain;
 using Xunit;
 
@@ -49,6 +50,31 @@ public class AddressesRepositoryTest : AddressesContextInfrastructureTestCase
         await Repository.Save(address);
 
         var addresses = await Repository.SearchAll();
+
+        addresses.Should().NotBeEmpty();
+    }
+
+    [Fact]
+    public async Task SearchAllByUserId_Should_Return_Addresses_By_UserId()
+    {
+        var userId = UserId.From(Guid.NewGuid().ToString());
+        var address = new Address
+        {
+            Id = AddressId.From(Guid.NewGuid()),
+            Country = WordMother.Random(),
+            State = WordMother.Random(),
+            City = WordMother.Random(),
+            Neighborhood = WordMother.Random(),
+            StreetName = WordMother.Random(),
+            Intersection = WordMother.Random(),
+            StreetNumber = WordMother.Random(),
+            Comments = WordMother.Random(),
+            UserId = userId
+        };
+
+        await Repository.Save(address);
+
+        var addresses = await Repository.SearchAllByUser(userId);
 
         addresses.Should().NotBeEmpty();
     }
