@@ -10,89 +10,84 @@ namespace Rusell.Test.Companies.Infrastructure.Persistence;
 
 public class CompaniesRepositoryTest : CompaniesContextInfrastructureTestCase
 {
-    private ICompaniesRepository Repository => GetService<ICompaniesRepository>();
+  private ICompaniesRepository Repository => GetService<ICompaniesRepository>();
 
-    [Fact]
-    public async Task Save_ShouldSaveACompany()
+  [Fact]
+  public async Task Save_ShouldSaveACompany()
+  {
+    var company = new Company
     {
-        var company = new Company
-        {
-            Id = CompanyId.From(Guid.NewGuid()),
-            Name = WordMother.Random(),
-            Nit = WordMother.Random(),
-            Info = WordMother.Random()
-        };
+      Id = CompanyId.From(Guid.NewGuid()),
+      Name = WordMother.Random(),
+      Nit = WordMother.Random(),
+      Info = WordMother.Random()
+    };
 
-        await Repository.Save(company);
-    }
+    await Repository.Save(company);
+  }
 
-    [Fact]
-    public async Task SearchAll_ShouldReturnAllCompanies()
+  [Fact]
+  public async Task SearchAll_ShouldReturnAllCompanies()
+  {
+    var companies = new List<Company>();
+    for (var i = 0; i < 10; i++)
+      companies.Add(new Company
+      {
+        Id = CompanyId.From(Guid.NewGuid()),
+        Name = WordMother.Random(),
+        Nit = WordMother.Random(),
+        Info = WordMother.Random()
+      });
+
+    foreach (var company in companies) await Repository.Save(company);
+
+    var result = await Repository.SearchAll();
+
+    result.Should().HaveCount(companies.Count);
+  }
+
+  [Fact]
+  public async Task Find_ShouldReturnACompany()
+  {
+    var company = new Company
     {
-        var companies = new List<Company>();
-        for (var i = 0; i < 10; i++)
-        {
-            companies.Add(new Company
-            {
-                Id = CompanyId.From(Guid.NewGuid()),
-                Name = WordMother.Random(),
-                Nit = WordMother.Random(),
-                Info = WordMother.Random()
-            });
-        }
+      Id = CompanyId.From(Guid.NewGuid()),
+      Name = WordMother.Random(),
+      Nit = WordMother.Random(),
+      Info = WordMother.Random()
+    };
 
-        foreach (var company in companies)
-        {
-            await Repository.Save(company);
-        }
+    await Repository.Save(company);
 
-        var result = await Repository.SearchAll();
+    var result = await Repository.Find(company.Id);
 
-        result.Should().HaveCount(companies.Count);
-    }
+    company.Id.Should().Be(result.Id);
+  }
 
-    [Fact]
-    public async Task Find_ShouldReturnACompany()
+  [Fact]
+  public async Task Find_ShouldReturnNull()
+  {
+    var result = await Repository.Find(CompanyId.From(Guid.NewGuid()));
+
+    result.Should().BeNull();
+  }
+
+  [Fact]
+  public async Task Any_ShouldReturnTrue()
+  {
+    var companyName = WordMother.Random();
+    var company = new Company
     {
-        var company = new Company
-        {
-            Id = CompanyId.From(Guid.NewGuid()),
-            Name = WordMother.Random(),
-            Nit = WordMother.Random(),
-            Info = WordMother.Random()
-        };
+      Id = CompanyId.From(Guid.NewGuid()),
+      Name = companyName,
+      Nit = WordMother.Random(),
+      Info = WordMother.Random()
+    };
 
-        await Repository.Save(company);
+    await Repository.Save(company);
 
-        var result = await Repository.Find(company.Id);
+    var result = await Repository.Any(c => c.Name.Value == companyName);
 
-        company.Id.Should().Be(result.Id);
-    }
-
-    [Fact]
-    public async Task Find_ShouldReturnNull()
-    {
-        var result = await Repository.Find(CompanyId.From(Guid.NewGuid()));
-
-        result.Should().BeNull();
-    }
-
-    [Fact]
-    public async Task Any_ShouldReturnTrue()
-    {
-        var companyName = WordMother.Random();
-        var company = new Company
-        {
-            Id = CompanyId.From(Guid.NewGuid()),
-            Name = companyName,
-            Nit = WordMother.Random(),
-            Info = WordMother.Random()
-        };
-
-        await Repository.Save(company);
-
-        var result = await Repository.Any(c => c.Name.Value == companyName);
-
-        result.Should().BeTrue();
-    }
+    result.Should().BeTrue();
+  }
 }

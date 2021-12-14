@@ -5,5 +5,5 @@ namespace Rusell.Shared.Domain.Persistence.Transactions;
 
 public interface ITransactionInitializer
 {
-    Task<IDbContextTransaction> Begin(DbContext dbContext);
+  Task<IDbContextTransaction> Begin(DbContext dbContext);
 }

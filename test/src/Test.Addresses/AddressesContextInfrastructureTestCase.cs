@@ -14,33 +14,30 @@ namespace Test.Addresses;
 
 public class AddressesContextInfrastructureTestCase : InfrastructureTestCase<Program>
 {
-    protected override void Setup()
+  protected override void Setup()
+  {
+  }
+
+  protected override Action<IServiceCollection> Services()
+  {
+    return services =>
     {
-    }
+      var descriptor =
+        services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<AddressesDbContext>));
+      if (descriptor is not null) services.Remove(descriptor);
 
-    protected override Action<IServiceCollection> Services()
-    {
-        return services =>
-        {
-            var descriptor =
-                services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<AddressesDbContext>));
-            if (descriptor is not null)
-            {
-                services.Remove(descriptor);
-            }
+      services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Addresses));
 
-            services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Addresses));
+      var serviceProvider = services.AddEntityFrameworkInMemoryDatabase().BuildServiceProvider();
+      services.AddDbContext<AddressesDbContext>(options =>
+      {
+        options.UseInMemoryDatabase(Guid.NewGuid().ToString());
+        options.UseInternalServiceProvider(serviceProvider);
+      });
 
-            var serviceProvider = services.AddEntityFrameworkInMemoryDatabase().BuildServiceProvider();
-            services.AddDbContext<AddressesDbContext>(options =>
-            {
-                options.UseInMemoryDatabase(Guid.NewGuid().ToString());
-                options.UseInternalServiceProvider(serviceProvider);
-            });
-
-            services.AddScoped<AddressesDbContext, AddressesDbContext>();
-            services.AddScoped<DbContext, AddressesDbContext>();
-            services.AddScoped<IAddressesRepository, MySqlAddressesRepository>();
-        };
-    }
+      services.AddScoped<AddressesDbContext, AddressesDbContext>();
+      services.AddScoped<DbContext, AddressesDbContext>();
+      services.AddScoped<IAddressesRepository, MySqlAddressesRepository>();
+    };
+  }
 }

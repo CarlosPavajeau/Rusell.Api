@@ -6,39 +6,31 @@ namespace Rusell.Shared.Infrastructure.Repository;
 
 public abstract class Repository<TEntity, TKey> : IRepository<TEntity, TKey> where TEntity : class
 {
-    protected readonly DbContext Context;
+  protected readonly DbContext Context;
 
-    protected Repository(DbContext context)
-    {
-        Context = context;
-    }
+  protected Repository(DbContext context)
+  {
+    Context = context;
+  }
 
-    public async Task Save(TEntity entity)
-    {
-        await Context.Set<TEntity>().AddAsync(entity);
-        await Context.SaveChangesAsync();
-    }
+  public async Task Save(TEntity entity)
+  {
+    await Context.Set<TEntity>().AddAsync(entity);
+    await Context.SaveChangesAsync();
+  }
 
-    public abstract Task<TEntity> Find(TKey key, bool noTracking);
+  public abstract Task<TEntity> Find(TKey key, bool noTracking);
 
-    public async Task<TEntity> Find(TKey key)
-    {
-        return await Find(key, true);
-    }
+  public async Task<TEntity> Find(TKey key) => await Find(key, true);
 
-    public async Task<bool> Any(Expression<Func<TEntity, bool>> predicate)
-    {
-        return await Context.Set<TEntity>().AnyAsync(predicate);
-    }
+  public async Task<bool> Any(Expression<Func<TEntity, bool>> predicate) =>
+    await Context.Set<TEntity>().AnyAsync(predicate);
 
-    public async Task<IEnumerable<TEntity>> SearchAll()
-    {
-        return await Context.Set<TEntity>().AsNoTracking().ToListAsync();
-    }
+  public async Task<IEnumerable<TEntity>> SearchAll() => await Context.Set<TEntity>().AsNoTracking().ToListAsync();
 
-    public async Task Delete(TEntity entity)
-    {
-        Context.Set<TEntity>().Remove(entity);
-        await Context.SaveChangesAsync();
-    }
+  public async Task Delete(TEntity entity)
+  {
+    Context.Set<TEntity>().Remove(entity);
+    await Context.SaveChangesAsync();
+  }
 }
