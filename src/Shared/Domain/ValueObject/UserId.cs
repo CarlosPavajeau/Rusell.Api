@@ -1,6 +1,6 @@
 using ValueOf;
 
-namespace Rusell.Shared.Domain;
+namespace Rusell.Shared.Domain.ValueObject;
 
 public class UserId : ValueOf<string, UserId>
 {

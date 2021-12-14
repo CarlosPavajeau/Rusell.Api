@@ -1,5 +1,6 @@
 using Rusell.Shared.Domain;
 using Rusell.Shared.Domain.Aggregate;
+using Rusell.Shared.Domain.ValueObject;
 
 namespace Rusell.Companies.Domain;
 
