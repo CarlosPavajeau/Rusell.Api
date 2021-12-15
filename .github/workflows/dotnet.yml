@@ -24,6 +24,6 @@ jobs:
       - name: build
         run: dotnet build --no-restore -c Release /p:ContinuousIntegrationBuild=true
       - name: test
-        run: dotnet test --no-build --verbosity normal -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+        run: dotnet test --no-build --verbosity normal -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:Exclude="[xunit.*]*%2c[Migrations.*]*"
       - name: codecov
         uses: codecov/codecov-action@v1
