@@ -14,7 +14,7 @@ public abstract class AggregateRoot
         return events;
     }
 
-    protected void Record(DomainEvent domainEvent)
+    public void Record(DomainEvent domainEvent)
     {
         _domainEvents.Add(domainEvent);
     }
