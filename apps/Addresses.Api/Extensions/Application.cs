@@ -1,6 +1,8 @@
 using Rusell.Addresses.Application.Create;
 using Rusell.Addresses.Application.Find;
 using Rusell.Addresses.Application.SearchAllByUser;
+using Rusell.Shared;
+using Rusell.Shared.Helpers;
 
 namespace Rusell.Addresses.Api.Extensions;
 
@@ -11,6 +13,8 @@ public static class Application
         services.AddScoped<AddressCreator, AddressCreator>();
         services.AddScoped<AddressFinder, AddressFinder>();
         services.AddScoped<AddressesByUserSearcher, AddressesByUserSearcher>();
+
+        services.AddDomainEventSubscriberInformationService(AssemblyHelper.GetInstance(Assemblies.Addresses));
 
         return services;
     }

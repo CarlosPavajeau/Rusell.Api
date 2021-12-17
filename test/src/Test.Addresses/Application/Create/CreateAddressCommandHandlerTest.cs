@@ -1,7 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Moq;
 using Rusell.Addresses.Application.Create;
+using Rusell.Shared.Domain.Bus.Event;
 using Rusell.Test.Shared.Domain;
 using Xunit;
 
@@ -13,7 +15,7 @@ public class CreateAddressCommandHandlerTest : AddressesUnitTestCase
 
     public CreateAddressCommandHandlerTest()
     {
-        _handler = new CreateAddressCommandHandler(new AddressCreator(Repository.Object));
+        _handler = new CreateAddressCommandHandler(new AddressCreator(Repository.Object, new Mock<IEventBus>().Object));
     }
 
     [Fact]
