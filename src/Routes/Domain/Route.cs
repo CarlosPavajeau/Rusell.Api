@@ -27,4 +27,16 @@ public class Route
 
     public CompanyId CompanyId { get; set; }
     public Company Company { get; set; }
+
+    public static Route Create(From from, To to, Cost cost, IsCustomerPickedUpAtHome isCustomerPickedUpAtHome,
+        IsCustomerDroppedOffAtHome isCustomerDroppedOffAtHome, CompanyId companyId) =>
+        new Route
+        {
+            From = from,
+            To = to,
+            Cost = cost,
+            IsCustomerPickedUpAtHome = isCustomerPickedUpAtHome,
+            IsCustomerDroppedOffAtHome = isCustomerDroppedOffAtHome,
+            CompanyId = companyId
+        };
 }

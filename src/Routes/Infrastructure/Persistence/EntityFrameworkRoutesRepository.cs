@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Rusell.Routes.Companies.Domain;
 using Rusell.Routes.Domain;
 using Rusell.Shared.Infrastructure.Repository;
 
@@ -15,5 +16,13 @@ public class EntityFrameworkRoutesRepository : Repository<Route, RouteId>, IRout
         var query = noTracking ? Context.Set<Route>().AsNoTracking() : Context.Set<Route>().AsTracking();
 
         return await query.FirstOrDefaultAsync(x => x.Id == key);
+    }
+
+    public async Task<IEnumerable<Route>> SearchAllByCompany(CompanyId companyId)
+    {
+        return await Context.Set<Route>()
+            .AsNoTracking()
+            .Where(r => r.CompanyId == companyId)
+            .ToListAsync();
     }
 }
