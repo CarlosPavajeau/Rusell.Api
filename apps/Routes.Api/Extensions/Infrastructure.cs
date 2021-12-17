@@ -2,6 +2,8 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Rusell.Routes.Addresses.Domain;
+using Rusell.Routes.Addresses.Infrastructure.Persistence;
 using Rusell.Routes.Companies.Domain;
 using Rusell.Routes.Companies.Infrastructure.Persistence;
 using Rusell.Routes.Domain;
@@ -35,6 +37,7 @@ public static class Infrastructure
         services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Routes));
         services.AddMediatR(typeof(Program));
 
+        services.AddScoped<IAddressesRepository, EntityFrameworkAddressesRepository>();
         services.AddScoped<IRoutesRepository, EntityFrameworkRoutesRepository>();
         services.AddScoped<ICompaniesRepository, EntityFrameworkCompaniesRepository>();
         services.AddScoped<IUnitWork, UnitWork>();

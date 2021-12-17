@@ -1,3 +1,4 @@
+using Rusell.Routes.Addresses.Application.Create;
 using Rusell.Routes.Application.Create;
 using Rusell.Routes.Application.SearchAllByCompany;
 using Rusell.Routes.Companies.Application.Create;
@@ -10,6 +11,7 @@ public static class Application
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
+        services.AddScoped<AddressCreator, AddressCreator>();
         services.AddScoped<CompanyCreator, CompanyCreator>();
         services.AddScoped<RouteCreator, RouteCreator>();
         services.AddScoped<RoutesByCompanySearcher, RoutesByCompanySearcher>();
