@@ -1,3 +1,4 @@
+using Rusell.Routes.Addresses.Domain;
 using Rusell.Routes.Companies.Domain;
 
 namespace Rusell.Routes.Domain;
@@ -10,10 +11,14 @@ public class Route
     }
 
     public RouteId Id { get; set; }
-    public From From { get; set; }
-    public To To { get; set; }
-    public Cost Cost { get; set; }
 
+    public AddressId FromId { get; set; }
+    public Address From { get; set; }
+
+    public AddressId ToId { get; set; }
+    public Address To { get; set; }
+
+    public Cost Cost { get; set; }
 
     /// <summary>
     ///     Indicates if passengers are picked up at home before starting the route.
@@ -28,12 +33,13 @@ public class Route
     public CompanyId CompanyId { get; set; }
     public Company Company { get; set; }
 
-    public static Route Create(From from, To to, Cost cost, IsCustomerPickedUpAtHome isCustomerPickedUpAtHome,
+    public static Route Create(AddressId fromId, AddressId toId, Cost cost,
+        IsCustomerPickedUpAtHome isCustomerPickedUpAtHome,
         IsCustomerDroppedOffAtHome isCustomerDroppedOffAtHome, CompanyId companyId) =>
         new Route
         {
-            From = from,
-            To = to,
+            FromId = fromId,
+            ToId = toId,
             Cost = cost,
             IsCustomerPickedUpAtHome = isCustomerPickedUpAtHome,
             IsCustomerDroppedOffAtHome = isCustomerDroppedOffAtHome,

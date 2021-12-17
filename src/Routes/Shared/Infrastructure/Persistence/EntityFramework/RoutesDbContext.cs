@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Rusell.Routes.Addresses.Domain;
 using Rusell.Routes.Companies.Domain;
 using Rusell.Routes.Domain;
 
@@ -11,6 +12,7 @@ public class RoutesDbContext : DbContext
     }
 
     public DbSet<Company> Companies { get; set; }
+    public DbSet<Address> Addresses { get; set; }
     public DbSet<Route> Routes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
