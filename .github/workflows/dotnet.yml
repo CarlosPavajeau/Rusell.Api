@@ -15,6 +15,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: start all the environment
+        run: docker run -d --hostname my-rabbit --name some-rabbit -p 8080:15672 -p 5451:5672  rabbitmq:3-management
+
       - name: Setup .Net Core
         uses: actions/setup-dotnet@v1
         with:
