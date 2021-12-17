@@ -11,3 +11,8 @@ services:
     build:
       context: .
       dockerfile: apps/Companies.Api/Dockerfile
+  routes-api:
+    image: cantte/rusell.routes-api
+    build:
+      context: .
+      dockerfile: apps/Routes.Api/Dockerfile
