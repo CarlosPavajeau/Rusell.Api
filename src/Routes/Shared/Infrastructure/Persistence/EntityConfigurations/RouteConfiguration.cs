@@ -24,7 +24,7 @@ public class RouteConfiguration : IEntityTypeConfiguration<Route>
 
         builder.OwnsOne(x => x.Cost)
             .Property(x => x.Value)
-            .HasPrecision(3)
+            .HasPrecision(12, 2)
             .HasColumnName(nameof(Route.Cost).ToDatabaseFormat());
 
         builder.OwnsOne(x => x.IsCustomerPickedUpAtHome)
