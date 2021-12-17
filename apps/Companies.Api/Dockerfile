@@ -6,25 +6,18 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
-COPY Rusell.sln Rusell.sln
-
-COPY "src/Addresses/Addresses.csproj" "src/Addresses/Addresses.csproj"
-COPY "apps/Addresses.Api/Addresses.Api.csproj" "apps/Addresses.Api/Addresses.Api.csproj"
 COPY "src/Companies/Companies.csproj" "src/Companies/Companies.csproj"
 COPY "apps/Companies.Api/Companies.Api.csproj" "apps/Companies.Api/Companies.Api.csproj"
 COPY "src/Shared/Shared.csproj" "src/Shared/Shared.csproj"
-COPY "test/src/Test.Shared/Test.Shared.csproj" "test/src/Test.Shared/Test.Shared.csproj"
-COPY "test/src/Test.Addresses/Test.Addresses.csproj" "test/src/Test.Addresses/Test.Addresses.csproj"
-COPY "test/src/Test.Companies/Test.Companies.csproj" "test/src/Test.Companies/Test.Companies.csproj"
 
-RUN dotnet restore "Rusell.sln"
+RUN dotnet restore "apps/Companies.Api/Companies.Api.csproj"
 
 COPY . .
 WORKDIR "/src/apps/Companies.Api"
-RUN dotnet build -c Release
+RUN dotnet build "Companies.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish --no-restore -c Release -o /app/publish
+RUN dotnet publish "Companies.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
