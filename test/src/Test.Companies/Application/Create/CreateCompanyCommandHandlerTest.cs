@@ -1,7 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Moq;
 using Rusell.Companies.Application.Create;
+using Rusell.Shared.Domain.Bus.Event;
 using Rusell.Test.Shared.Domain;
 using Xunit;
 
@@ -13,7 +15,7 @@ public class CreateCompanyCommandHandlerTest : CompaniesUnitTestCase
 
     public CreateCompanyCommandHandlerTest()
     {
-        _handler = new CreateCompanyCommandHandler(new CompanyCreator(Repository.Object));
+        _handler = new CreateCompanyCommandHandler(new CompanyCreator(Repository.Object, new Mock<IEventBus>().Object));
     }
 
     [Fact]
