@@ -14,4 +14,6 @@ public class Address
     // For ef core many to many relationship
     public ICollection<Route> Routes1 { get; set; }
     public ICollection<Route> Routes2 { get; set; }
+
+    public override string ToString() => $"{Country}, {State}, {City}";
 }

@@ -1,6 +1,7 @@
 using Rusell.Routes.Addresses.Application.Create;
 using Rusell.Routes.Application.Create;
 using Rusell.Routes.Application.SearchAllByCompany;
+using Rusell.Routes.Application.SearchAllByFromTo;
 using Rusell.Routes.Companies.Application.Create;
 using Rusell.Shared;
 using Rusell.Shared.Helpers;
@@ -15,6 +16,7 @@ public static class Application
         services.AddScoped<CompanyCreator, CompanyCreator>();
         services.AddScoped<RouteCreator, RouteCreator>();
         services.AddScoped<RoutesByCompanySearcher, RoutesByCompanySearcher>();
+        services.AddScoped<RoutesByFromToSearcher, RoutesByFromToSearcher>();
 
         services.AddDomainEventSubscriberInformationService(AssemblyHelper.GetInstance(Assemblies.Routes));
         return services;
