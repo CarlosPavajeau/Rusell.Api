@@ -4,31 +4,22 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rusell.Routes.Api.Controllers.Requests;
-using Rusell.Routes.Application;
 using Rusell.Routes.Application.Create;
-using Rusell.Routes.Application.SearchAllByCompany;
 
 namespace Rusell.Routes.Api.Controllers;
 
 [ApiController]
 [Authorize]
-[Route("api/routes/companies/{companyId:guid}/[controller]")]
-public class RoutesController : ControllerBase
+[Route("api/routes/companies/{companyId:guid}/routes")]
+public class RoutesPostController : ControllerBase
 {
-    private readonly ILogger<RoutesController> _logger;
+    private readonly ILogger<RoutesPostController> _logger;
     private readonly IMediator _mediator;
 
-    public RoutesController(ILogger<RoutesController> logger, IMediator mediator)
+    public RoutesPostController(ILogger<RoutesPostController> logger, IMediator mediator)
     {
         _logger = logger;
         _mediator = mediator;
-    }
-
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<RouteResponse>>> GetRoutes(Guid companyId)
-    {
-        var routes = await _mediator.Send(new SearchAllRoutesByCompanyQuery(companyId));
-        return Ok(routes);
     }
 
     [HttpPost]
