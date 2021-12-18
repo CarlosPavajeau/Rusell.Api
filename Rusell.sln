@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Routes", "src\Routes\Routes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Routes.Api", "apps\Routes.Api\Routes.Api.csproj", "{77297997-78DF-454D-A547-DCE91B7915C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Routes", "test\src\Test.Routes\Test.Routes.csproj", "{9304863A-A61A-44EF-A33E-5B27E6D218FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,7 @@ Global
 		{1ADA2499-C929-4B2A-B4D9-9BEBC86C1284} = {AC158A59-206F-421C-A848-73CC151E0E10}
 		{FFE8E61F-772B-408E-BB64-5EC028AF8C19} = {A6016F2C-92DE-47A1-8EC9-1DB924D9AAEB}
 		{77297997-78DF-454D-A547-DCE91B7915C7} = {882F1C46-DFA6-46EF-9C93-26C4A0C62D0F}
+		{9304863A-A61A-44EF-A33E-5B27E6D218FA} = {0E960D64-5DE1-433D-8456-B82244DA8E32}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{764E0BCE-5465-4772-B966-5E7865DD82E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -104,5 +107,9 @@ Global
 		{77297997-78DF-454D-A547-DCE91B7915C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77297997-78DF-454D-A547-DCE91B7915C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77297997-78DF-454D-A547-DCE91B7915C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9304863A-A61A-44EF-A33E-5B27E6D218FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9304863A-A61A-44EF-A33E-5B27E6D218FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9304863A-A61A-44EF-A33E-5B27E6D218FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9304863A-A61A-44EF-A33E-5B27E6D218FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
