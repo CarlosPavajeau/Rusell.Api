@@ -47,7 +47,7 @@ public class CompaniesControllerTest : CompaniesContextApplicationTestCase
 
         createResponse.EnsureSuccessStatusCode();
 
-        var response = await Client.GetAsync("/api/companies/by_nit/123");
+        var response = await Client.GetAsync("/api/companies/by-nit/123");
         response.EnsureSuccessStatusCode();
         var content = await response.Content.ReadAsStringAsync();
         var companyResponse = JsonSerializer.Deserialize<CompanyResponse>(content);

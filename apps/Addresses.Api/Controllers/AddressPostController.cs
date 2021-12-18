@@ -5,45 +5,22 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rusell.Addresses.Api.Controllers.Requests;
-using Rusell.Addresses.Application;
 using Rusell.Addresses.Application.Create;
-using Rusell.Addresses.Application.Find;
-using Rusell.Addresses.Application.SearchAllByUser;
 
 namespace Rusell.Addresses.Api.Controllers;
 
 [ApiController]
 [Authorize]
-[Route("api/[controller]")]
-public class AddressesController : ControllerBase
+[Route("api/addresses")]
+public class AddressPostController : ControllerBase
 {
-    private readonly ILogger<AddressesController> _logger;
+    private readonly ILogger<AddressPostController> _logger;
     private readonly IMediator _mediator;
 
-    public AddressesController(IMediator mediator, ILogger<AddressesController> logger)
+    public AddressPostController(ILogger<AddressPostController> logger, IMediator mediator)
     {
-        _mediator = mediator;
         _logger = logger;
-    }
-
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<AddressResponse>>> GetAddresses()
-    {
-        var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-        if (userId is null)
-            return Unauthorized();
-
-        var addresses = await _mediator.Send(new SearchAllAddressesByUserQuery(userId));
-        return Ok(addresses);
-    }
-
-    [HttpGet("{id}")]
-    public async Task<ActionResult<AddressResponse>> GetAddress(string id)
-    {
-        var address = await _mediator.Send(new FindAddressQuery(id));
-        if (address is null) return NotFound();
-
-        return Ok(address);
+        _mediator = mediator;
     }
 
     [HttpPost]

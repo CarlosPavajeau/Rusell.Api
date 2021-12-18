@@ -5,43 +5,22 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rusell.Companies.Api.Controllers.Requests;
-using Rusell.Companies.Application;
 using Rusell.Companies.Application.Create;
-using Rusell.Companies.Application.Find;
-using Rusell.Companies.Application.FindByNit;
 
 namespace Rusell.Companies.Api.Controllers;
 
 [ApiController]
 [Authorize]
-[Route("api/[controller]")]
-public class CompaniesController : ControllerBase
+[Route("api/companies")]
+public class CompanyPostController : ControllerBase
 {
-    private readonly ILogger<CompaniesController> _logger;
+    private readonly ILogger<CompanyPostController> _logger;
     private readonly IMediator _mediator;
 
-    public CompaniesController(IMediator mediator, ILogger<CompaniesController> logger)
+    public CompanyPostController(ILogger<CompanyPostController> logger, IMediator mediator)
     {
-        _mediator = mediator;
         _logger = logger;
-    }
-
-    [HttpGet("{id}")]
-    public async Task<ActionResult<CompanyResponse>> GetCompany(string id)
-    {
-        var company = await _mediator.Send(new FindCompanyQuery(id));
-        if (company is null) return NotFound();
-
-        return Ok(company);
-    }
-
-    [HttpGet("by_nit/{nit}")]
-    public async Task<ActionResult<CompanyResponse>> GetCompanyByNit(string nit)
-    {
-        var company = await _mediator.Send(new FindCompanyByNitQuery(nit));
-        if (company is null) return NotFound();
-
-        return Ok(company);
+        _mediator = mediator;
     }
 
     [HttpPost]
