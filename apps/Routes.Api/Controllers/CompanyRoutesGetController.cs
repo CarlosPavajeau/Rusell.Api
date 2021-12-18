@@ -9,12 +9,12 @@ namespace Rusell.Routes.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/routes/companies/{companyId:guid}/routes")]
-public class GetCompanyRoutesController : ControllerBase
+public class CompanyRoutesGetController : ControllerBase
 {
-    private readonly ILogger<GetCompanyRoutesController> _logger;
+    private readonly ILogger<CompanyRoutesGetController> _logger;
     private readonly IMediator _mediator;
 
-    public GetCompanyRoutesController(ILogger<GetCompanyRoutesController> logger, IMediator mediator)
+    public CompanyRoutesGetController(ILogger<CompanyRoutesGetController> logger, IMediator mediator)
     {
         _logger = logger;
         _mediator = mediator;

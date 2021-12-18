@@ -11,12 +11,12 @@ namespace Rusell.Routes.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/routes")]
-public class GetRoutesFromToController : ControllerBase
+public class RoutesFromToGetController : ControllerBase
 {
-    private readonly ILogger<GetRoutesFromToController> _logger;
+    private readonly ILogger<RoutesFromToGetController> _logger;
     private readonly IMediator _mediator;
 
-    public GetRoutesFromToController(ILogger<GetRoutesFromToController> logger, IMediator mediator)
+    public RoutesFromToGetController(ILogger<RoutesFromToGetController> logger, IMediator mediator)
     {
         _logger = logger;
         _mediator = mediator;
