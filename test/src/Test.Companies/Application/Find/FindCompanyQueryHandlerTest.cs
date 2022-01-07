@@ -5,6 +5,7 @@ using FluentAssertions;
 using Moq;
 using Rusell.Companies.Application.Find;
 using Rusell.Companies.Domain;
+using Rusell.Test.Shared.Domain;
 using Xunit;
 
 namespace Rusell.Test.Companies.Application.Find;
@@ -20,7 +21,9 @@ public class FindCompanyQueryHandlerTest : CompaniesUnitTestCase
     {
         _handler = new FindCompanyQueryHandler(new CompanyFinder(Repository.Object));
 
-        Repository.Setup(x => x.Find(_companyIdFound)).ReturnsAsync(new Company());
+        Repository.Setup(x => x.Find(_companyIdFound)).ReturnsAsync(Company.Create(WordMother.Random(),
+            WordMother.Random(), WordMother.Random(),
+            WordMother.Random()));
         Repository.Setup(x => x.Find(_companyIdNotFound)).ReturnsAsync((Company?) null);
     }
 

@@ -4,6 +4,7 @@ using FluentAssertions;
 using Moq;
 using Rusell.Companies.Application.FindByNit;
 using Rusell.Companies.Domain;
+using Rusell.Test.Shared.Domain;
 using Xunit;
 
 namespace Rusell.Test.Companies.Application.FindByNit;
@@ -16,7 +17,9 @@ public class FindCompanyByNitQueryHandlerTest : CompaniesUnitTestCase
     {
         _handler = new FindCompanyByNitQueryHandler(new CompanyByNitFinder(Repository.Object));
 
-        Repository.Setup(x => x.FindByNit("1234567890")).ReturnsAsync(new Company());
+        Repository.Setup(x => x.FindByNit("1234567890")).ReturnsAsync(Company.Create(WordMother.Random(),
+            WordMother.Random(), WordMother.Random(),
+            WordMother.Random()));
         Repository.Setup(x => x.FindByNit("321")).ReturnsAsync((Company?) null);
     }
 

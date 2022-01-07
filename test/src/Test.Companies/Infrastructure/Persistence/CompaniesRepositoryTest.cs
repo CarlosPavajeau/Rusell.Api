@@ -15,13 +15,8 @@ public class CompaniesRepositoryTest : CompaniesContextInfrastructureTestCase
     [Fact]
     public async Task Save_ShouldSaveACompany()
     {
-        var company = new Company
-        {
-            Id = CompanyId.From(Guid.NewGuid()),
-            Name = WordMother.Random(),
-            Nit = WordMother.Random(),
-            Info = WordMother.Random()
-        };
+        var company = Company.Create(WordMother.Random(), WordMother.Random(), WordMother.Random(),
+            WordMother.Random());
 
         await Repository.Save(company);
     }
@@ -31,13 +26,8 @@ public class CompaniesRepositoryTest : CompaniesContextInfrastructureTestCase
     {
         var companies = new List<Company>();
         for (var i = 0; i < 10; i++)
-            companies.Add(new Company
-            {
-                Id = CompanyId.From(Guid.NewGuid()),
-                Name = WordMother.Random(),
-                Nit = WordMother.Random(),
-                Info = WordMother.Random()
-            });
+            companies.Add(Company.Create(WordMother.Random(), WordMother.Random(), WordMother.Random(),
+                WordMother.Random()));
 
         foreach (var company in companies) await Repository.Save(company);
 
@@ -49,13 +39,8 @@ public class CompaniesRepositoryTest : CompaniesContextInfrastructureTestCase
     [Fact]
     public async Task Find_ShouldReturnACompany()
     {
-        var company = new Company
-        {
-            Id = CompanyId.From(Guid.NewGuid()),
-            Name = WordMother.Random(),
-            Nit = WordMother.Random(),
-            Info = WordMother.Random()
-        };
+        var company = Company.Create(WordMother.Random(), WordMother.Random(), WordMother.Random(),
+            WordMother.Random());
 
         await Repository.Save(company);
 
@@ -77,13 +62,8 @@ public class CompaniesRepositoryTest : CompaniesContextInfrastructureTestCase
     public async Task Any_ShouldReturnTrue()
     {
         var companyName = WordMother.Random();
-        var company = new Company
-        {
-            Id = CompanyId.From(Guid.NewGuid()),
-            Name = companyName,
-            Nit = WordMother.Random(),
-            Info = WordMother.Random()
-        };
+        var company = Company.Create(WordMother.Random(), WordMother.Random(), WordMother.Random(),
+            WordMother.Random());
 
         await Repository.Save(company);
 

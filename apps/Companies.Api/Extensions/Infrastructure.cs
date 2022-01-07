@@ -1,3 +1,4 @@
+using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -44,6 +45,8 @@ public static class Infrastructure
 
         services.AddRabbitMq(configuration);
         services.AddScoped<IDomainEventDeserializer, DomainEventJsonDeserializer>();
+
+        TypeAdapterConfig.GlobalSettings.Scan(AssemblyHelper.GetInstance(Assemblies.Companies));
 
         return services;
     }
