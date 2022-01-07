@@ -16,4 +16,12 @@ public class EntityFrameworkEmployeesRepository : Repository<Employee, EmployeeI
 
         return await query.FirstOrDefaultAsync(x => x.Id == key);
     }
+
+    public async Task<IEnumerable<Employee>> SearchAllByCompany(CompanyId companyId)
+    {
+        return await Context.Set<Employee>()
+            .AsNoTracking()
+            .Where(e => e.CompanyId == companyId)
+            .ToListAsync();
+    }
 }
