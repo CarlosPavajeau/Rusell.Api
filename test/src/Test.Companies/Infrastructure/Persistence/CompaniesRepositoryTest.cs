@@ -62,7 +62,7 @@ public class CompaniesRepositoryTest : CompaniesContextInfrastructureTestCase
     public async Task Any_ShouldReturnTrue()
     {
         var companyName = WordMother.Random();
-        var company = Company.Create(WordMother.Random(), WordMother.Random(), WordMother.Random(),
+        var company = Company.Create(companyName, WordMother.Random(), WordMother.Random(),
             WordMother.Random());
 
         await Repository.Save(company);
