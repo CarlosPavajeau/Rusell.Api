@@ -22,4 +22,4 @@ RUN dotnet publish "Routes.Api.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Routes.Api.dll"]
+ENTRYPOINT ["dotnet", "Rusell.Routes.Api.dll"]
