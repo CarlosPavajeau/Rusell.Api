@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rusell-addresses-deploy
+  labels:
+    app: rusell-addresses
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rusell-addresses
+  template:
+    metadata:
+      labels:
+        app: rusell-addresses
+    spec:
+      containers:
+        - name: rusell-addresses
+          image: cantte/rusell.address-api:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rusell-addresses-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rusell-addresses
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: rusell-addresses

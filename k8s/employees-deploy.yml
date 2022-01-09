@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rusell-employees-deploy
+  labels:
+    app: rusell-employees
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rusell-employees
+  template:
+    metadata:
+      labels:
+        app: rusell-employees
+    spec:
+      containers:
+        - name: rusell-employees
+          image: cantte/rusell.employees-api:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rusell-employees-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rusell-employees
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: rusell-employees

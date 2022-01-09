@@ -42,6 +42,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees", "src\Employees\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees.Api", "apps\Employees.Api\Employees.Api.csproj", "{63FF828F-5143-4689-AA3F-6649D2A25F45}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{A177CB9E-FAB8-495D-AF00-AC9EC1DC4EC1}"
+	ProjectSection(SolutionItems) = preProject
+		k8s\posgres-deploy.yml = k8s\posgres-deploy.yml
+		k8s\local-pvc.yml = k8s\local-pvc.yml
+		k8s\addresses-deploy.yml = k8s\addresses-deploy.yml
+		k8s\ingress-service.yml = k8s\ingress-service.yml
+		k8s\rabbitmq-deploy.yml = k8s\rabbitmq-deploy.yml
+		k8s\companies-deploy.yml = k8s\companies-deploy.yml
+		k8s\employees-deploy.yml = k8s\employees-deploy.yml
+		k8s\routes-deploy.yml = k8s\routes-deploy.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

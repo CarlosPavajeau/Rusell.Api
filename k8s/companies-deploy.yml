@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rusell-companies-deploy
+  labels:
+    app: rusell-companies
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rusell-companies
+  template:
+    metadata:
+      labels:
+        app: rusell-companies
+    spec:
+      containers:
+        - name: rusell-companies
+          image: cantte/rusell.companies-api:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rusell-companies-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rusell-companies
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: rusell-companies

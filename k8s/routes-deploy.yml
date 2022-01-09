@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rusell-routes-deploy
+  labels:
+    app: rusell-routes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rusell-routes
+  template:
+    metadata:
+      labels:
+        app: rusell-routes
+    spec:
+      containers:
+        - name: rusell-routes
+          image: cantte/rusell.routes-api:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rusell-routes-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rusell-routes
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: rusell-routes

@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rusell-postgres
+spec:
+  selector:
+    matchLabels:
+      app: rusell-postgres
+  template:
+    metadata:
+      labels:
+        app: rusell-postgres
+    spec:
+      containers:
+        - name: rusell-postgres
+          image: postgres:latest
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_PASSWORD
+              value: "rusell"
+            - name: POSTGRES_USER
+              value: "rusell"
+            - name: POSTGRES_DB
+              value: "rusell"
+          volumeMounts:
+            - name: rusell-postgres-data
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: rusell-postgres-data
+          persistentVolumeClaim:
+            claimName: rusell-postgres-data-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rusell-postgres-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    app: rusell-postgres
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rusell-postgres-load-balancer
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    app: rusell-postgres

@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rusell-ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  rules:
+    - host: rusell.com
+      http:
+        paths:
+          - path: /api/addresses
+            pathType: Prefix
+            backend:
+              service:
+                name: rusell-addresses-service
+                port:
+                  number: 80
+          - path: /api/companies
+            pathType: Prefix
+            backend:
+              service:
+                name: rusell-companies-service
+                port:
+                  number: 80
+          - path: /api/employees
+            pathType: Prefix
+            backend:
+              service:
+                name: rusell-employees-service
+                port:
+                  number: 80
+          - path: /api/routes
+            pathType: Prefix
+            backend:
+              service:
+                name: rusell-routes-service
+                port:
+                  number: 80
