@@ -1,4 +1,6 @@
 using Rusell.Routes.Api.Extensions;
+using Rusell.Routes.Shared.Infrastructure.Persistence.EntityFramework;
+using Rusell.Shared.Extensions.DependencyInjection;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+if (app.Environment.IsProduction()) app.MigrateDatabase<RoutesDbContext>();
 
 if (app.Environment.IsDevelopment())
 {

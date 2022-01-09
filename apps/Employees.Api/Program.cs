@@ -1,4 +1,6 @@
 using Rusell.Employees.Api.Extensions.DependencyInjection;
+using Rusell.Employees.Shared.Infrastructure.Persistence.EntityFramework;
+using Rusell.Shared.Extensions.DependencyInjection;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+if (app.Environment.IsProduction()) app.MigrateDatabase<EmployeesDbContext>();
 
 if (app.Environment.IsDevelopment())
 {
