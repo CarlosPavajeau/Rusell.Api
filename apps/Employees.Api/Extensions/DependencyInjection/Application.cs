@@ -1,5 +1,6 @@
 using Rusell.Employees.Application.Create;
 using Rusell.Employees.Application.SearchAllByCompany;
+using Rusell.Employees.Application.SearchAllByType;
 using Rusell.Shared;
 using Rusell.Shared.Helpers;
 
@@ -11,6 +12,7 @@ public static class Application
     {
         services.AddScoped<EmployeeCreator, EmployeeCreator>();
         services.AddScoped<EmployeesByCompanySearcher, EmployeesByCompanySearcher>();
+        services.AddScoped<CompanyEmployeesByTypeSearcher, CompanyEmployeesByTypeSearcher>();
 
         services.AddDomainEventSubscriberInformationService(AssemblyHelper.GetInstance(Assemblies.Employees));
 

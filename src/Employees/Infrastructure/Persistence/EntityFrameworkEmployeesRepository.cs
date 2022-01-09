@@ -24,4 +24,12 @@ public class EntityFrameworkEmployeesRepository : Repository<Employee, EmployeeI
             .Where(e => e.CompanyId == companyId)
             .ToListAsync();
     }
+
+    public async Task<IEnumerable<Employee>> SearchAllByType(CompanyId companyId, EmployeeType type)
+    {
+        return await Context.Set<Employee>()
+            .AsNoTracking()
+            .Where(e => e.CompanyId == companyId && e.Type == type)
+            .ToListAsync();
+    }
 }
