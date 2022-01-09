@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-    - host: rusell.com
+    - host: api.rusell.com
       http:
         paths:
           - path: /api/addresses
