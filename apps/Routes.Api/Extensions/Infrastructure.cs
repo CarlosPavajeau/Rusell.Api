@@ -9,10 +9,9 @@ using Rusell.Routes.Companies.Infrastructure.Persistence;
 using Rusell.Routes.Domain;
 using Rusell.Routes.Infrastructure.Persistence;
 using Rusell.Routes.Shared.Infrastructure.Persistence.EntityFramework;
-using Rusell.Shared.Domain.Bus.Event;
 using Rusell.Shared.Domain.Persistence;
+using Rusell.Shared.Extensions.DependencyInjection;
 using Rusell.Shared.Helpers;
-using Rusell.Shared.Infrastructure.Bus.Event;
 using Rusell.Shared.Infrastructure.Bus.Event.RabbitMq;
 using Rusell.Shared.Infrastructure.Persistence;
 
@@ -42,13 +41,7 @@ public static class Infrastructure
         services.AddScoped<ICompaniesRepository, EntityFrameworkCompaniesRepository>();
         services.AddScoped<IUnitWork, UnitWork>();
 
-        services.AddScoped<IEventBus, RabbitMqEventBus>();
-        services.AddScoped<IEventBusConfiguration, RabbitMqEventBusConfiguration>();
-        services.AddScoped<IDomainEventsConsumer, RabbitMqDomainEventsConsumer>();
-        services.AddScoped<DomainEventsInformation, DomainEventsInformation>();
-
         services.AddRabbitMq(configuration);
-        services.AddScoped<IDomainEventDeserializer, DomainEventJsonDeserializer>();
 
         services.AddHostedService<RabbitMqBusSubscriber>();
 
@@ -68,13 +61,5 @@ public static class Infrastructure
                         ValidIssuer = $"{configuration["Auth0:Domain"]}"
                     };
                 });
-    }
-
-    private static void AddRabbitMq(this IServiceCollection services,
-        IConfiguration configuration)
-    {
-        services.AddScoped<RabbitMqPublisher, RabbitMqPublisher>();
-        services.AddScoped<RabbitMqConfig, RabbitMqConfig>();
-        services.Configure<RabbitMqConfigParams>(configuration.GetSection("RabbitMq"));
     }
 }
