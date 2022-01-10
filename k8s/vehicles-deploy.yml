@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rusell-vehicles-deploy
+  labels:
+    app: rusell-vehicles
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rusell-vehicles
+  template:
+    metadata:
+      labels:
+        app: rusell-vehicles
+    spec:
+      containers:
+        - name: rusell-vehicles
+          image: cantte/rusell.vehicles-api:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rusell-vehicles-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rusell-vehicles
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: rusell-vehicles

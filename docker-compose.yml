@@ -21,3 +21,8 @@ services:
     build:
       context: .
       dockerfile: apps/Employees.Api/Dockerfile
+  vehicles-api:
+    image: cantte/rusell.vehicles-api
+    build:
+      context: .
+      dockerfile: apps/Vehicles.Api/Dockerfile
