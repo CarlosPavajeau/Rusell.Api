@@ -1,11 +1,9 @@
-using DasMulli.DataBuilderGenerator;
 using Rusell.Shared.Domain.Aggregate;
 using Rusell.Vehicles.Domain.LegalInformation;
 using Rusell.Vehicles.Employees.Domain;
 
 namespace Rusell.Vehicles.Domain;
 
-[GenerateDataBuilder]
 public class Vehicle : AggregateRoot
 {
     public Vehicle(LicensePlate licensePlate, InternalNumber internalNumber, PropertyCard propertyCard,
