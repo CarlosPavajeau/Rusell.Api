@@ -1,14 +1,18 @@
+using DasMulli.DataBuilderGenerator;
 using Rusell.Shared.Domain.Aggregate;
 using Rusell.Vehicles.Domain.LegalInformation;
 using Rusell.Vehicles.Employees.Domain;
 
 namespace Rusell.Vehicles.Domain;
 
+[GenerateDataBuilder]
 public class Vehicle : AggregateRoot
 {
     public Vehicle(LicensePlate licensePlate, InternalNumber internalNumber, PropertyCard propertyCard,
         VehicleType type, VehicleMark mark, VehicleModel model, VehicleModelNumber modelNumber, VehicleColor color,
-        VehicleChairs chairs, EngineNumber engineNumber, ChassisNumber chassisNumber)
+        VehicleChairs chairs, EngineNumber engineNumber, ChassisNumber chassisNumber, EmployeeId ownerId,
+        Employee owner, EmployeeId driverId,
+        Employee driver, CompanyId companyId)
     {
         LicensePlate = licensePlate;
         InternalNumber = internalNumber;
@@ -21,11 +25,15 @@ public class Vehicle : AggregateRoot
         Chairs = chairs;
         EngineNumber = engineNumber;
         ChassisNumber = chassisNumber;
+        OwnerId = ownerId;
+        Owner = owner;
+        DriverId = driverId;
+        Driver = driver;
+        CompanyId = companyId;
     }
 
-    private Vehicle()
+    internal Vehicle()
     {
-        // required by EF
     }
 
     public LicensePlate LicensePlate { get; set; }

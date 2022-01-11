@@ -13,7 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application"/>
+    <PackageReference Include="BuilderGenerator" Version="2.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="DasMulli.DataBuilderGenerator.Attributes" Version="2.0.0"/>
   </ItemGroup>
 
 </Project>
