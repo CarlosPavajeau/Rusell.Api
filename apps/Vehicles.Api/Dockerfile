@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
 COPY "src/Vehicles/Vehicles.csproj" "src/Vehicles/Vehicles.csproj"
-COPY "src/Vehicles.Api/Vehicles.Api.csproj" "src/Vehicles.Api/Vehicles.Api.csproj"
+COPY "apps/Vehicles.Api/Vehicles.Api.csproj" "apps/Vehicles.Api/Vehicles.Api.csproj"
 COPY "src/Shared/Shared.csproj" "src/Shared/Shared.csproj"
 
 RUN dotnet restore "apps/Vehicles.Api/Vehicles.Api.csproj"
