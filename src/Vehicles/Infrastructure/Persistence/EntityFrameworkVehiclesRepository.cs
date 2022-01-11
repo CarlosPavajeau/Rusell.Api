@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Rusell.Shared.Infrastructure.Repository;
 using Rusell.Vehicles.Domain;
@@ -17,5 +18,14 @@ public class EntityFrameworkVehiclesRepository : Repository<Vehicle, LicensePlat
         return await query
             .Include(x => x.Driver)
             .FirstOrDefaultAsync(x => x.LicensePlate == key);
+    }
+
+    public override async Task<IEnumerable<Vehicle>> SearchAll(Expression<Func<Vehicle, bool>> predicate)
+    {
+        return await Context.Set<Vehicle>()
+            .AsNoTracking()
+            .Include(x => x.Driver)
+            .Where(predicate)
+            .ToListAsync();
     }
 }

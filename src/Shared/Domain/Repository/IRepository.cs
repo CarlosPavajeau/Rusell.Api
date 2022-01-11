@@ -58,6 +58,16 @@ public interface IRepository<TEntity, in TKey> where TEntity : class
     Task<IEnumerable<TEntity>> SearchAll();
 
     /// <summary>
+    ///     Get all entity entries with a predicate.
+    /// </summary>
+    /// <param name="predicate">Condition for search</param>
+    /// <returns>
+    ///     A task that represents the asynchronous operation
+    ///     The task result contains the entity entries
+    /// </returns>
+    Task<IEnumerable<TEntity>> SearchAll(Expression<Func<TEntity, bool>> predicate);
+
+    /// <summary>
     ///     Delete the entity entry.
     /// </summary>
     /// <param name="entity">Entity to delete</param>

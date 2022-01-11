@@ -28,6 +28,10 @@ public abstract class Repository<TEntity, TKey> : IRepository<TEntity, TKey> whe
 
     public async Task<IEnumerable<TEntity>> SearchAll() => await Context.Set<TEntity>().AsNoTracking().ToListAsync();
 
+    public virtual async Task<IEnumerable<TEntity>> SearchAll(Expression<Func<TEntity, bool>> predicate) =>
+        await Context.Set<TEntity>().Where(predicate).ToListAsync();
+
+
     public async Task Delete(TEntity entity)
     {
         Context.Set<TEntity>().Remove(entity);
