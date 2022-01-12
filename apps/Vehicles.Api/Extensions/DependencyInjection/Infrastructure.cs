@@ -12,6 +12,7 @@ using Rusell.Shared.Infrastructure.Persistence;
 using Rusell.Vehicles.Api.Grpc;
 using Rusell.Vehicles.Api.HostedServices;
 using Rusell.Vehicles.Domain;
+using Rusell.Vehicles.Domain.LegalInformation;
 using Rusell.Vehicles.Employees.Domain;
 using Rusell.Vehicles.Employees.Infrastructure.Persistence;
 using Rusell.Vehicles.Infrastructure.Persistence;
@@ -40,6 +41,7 @@ public static class Infrastructure
 
         services.AddScoped<IEmployeesRepository, EntityFrameworkEmployeesRepository>();
         services.AddScoped<IVehiclesRepository, EntityFrameworkVehiclesRepository>();
+        services.AddScoped<ILegalInformationRepository, EntityFrameworkLegalInformationRepository>();
         services.AddScoped<IUnitWork, UnitWork>();
 
         services.AddRabbitMq(configuration);
