@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "Rusell.Employees.Api";
+
+service GrpcEmployees {
+  rpc SearchAllEmployees(SearchAllEmployeesRequest) returns (SearchAllEmployeesResponse) {}
+}
+
+message SearchAllEmployeesRequest {
+}
+
+message GrpcEmployee {
+  string id = 1;
+  string fullName = 2;
+}
+
+message SearchAllEmployeesResponse {
+  repeated GrpcEmployee employees = 1;
+}

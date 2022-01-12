@@ -11,6 +11,14 @@
 
   <ItemGroup>
     <PackageReference Include="EFCore.NamingConventions" Version="6.0.0"/>
+    <PackageReference Include="Google.Protobuf" Version="3.19.3"/>
+    <PackageReference Include="Grpc.AspNetCore.Server.ClientFactory" Version="2.41.0"/>
+    <PackageReference Include="Grpc.Net.Client" Version="2.41.0"/>
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.41.0"/>
+    <PackageReference Include="Grpc.Tools" Version="2.43.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1"/>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.1"/>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
@@ -23,6 +31,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Vehicles\Vehicles.csproj"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\employees.proto" GrpcServices="Client"/>
   </ItemGroup>
 
 </Project>

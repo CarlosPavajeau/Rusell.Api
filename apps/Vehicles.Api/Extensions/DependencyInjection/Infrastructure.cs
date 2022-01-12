@@ -3,11 +3,14 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Rusell.Employees.Api;
 using Rusell.Shared.Domain.Persistence;
 using Rusell.Shared.Extensions.DependencyInjection;
 using Rusell.Shared.Helpers;
 using Rusell.Shared.Infrastructure.Bus.Event.RabbitMq;
 using Rusell.Shared.Infrastructure.Persistence;
+using Rusell.Vehicles.Api.Grpc;
+using Rusell.Vehicles.Api.HostedServices;
 using Rusell.Vehicles.Domain;
 using Rusell.Vehicles.Employees.Domain;
 using Rusell.Vehicles.Employees.Infrastructure.Persistence;
@@ -42,8 +45,16 @@ public static class Infrastructure
         services.AddRabbitMq(configuration);
 
         services.AddHostedService<RabbitMqBusSubscriber>();
+        services.AddHostedService<SearchAndCreateEmployees>();
 
         TypeAdapterConfig.GlobalSettings.Scan(AssemblyHelper.GetInstance(Assemblies.Vehicles));
+
+        services.AddGrpcClient<GrpcEmployees.GrpcEmployeesClient>((grpcServices, options) =>
+        {
+            var employeesApi = grpcServices.GetRequiredService<IConfiguration>()["GrpcEmployees"];
+            options.Address = new Uri(employeesApi);
+        });
+        services.AddScoped<IEmployeesService, EmployeesService>();
 
         return services;
     }

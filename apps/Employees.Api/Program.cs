@@ -1,4 +1,5 @@
 using Rusell.Employees.Api.Extensions.DependencyInjection;
+using Rusell.Employees.Api.Grpc;
 using Rusell.Employees.Shared.Infrastructure.Persistence.EntityFramework;
 using Rusell.Shared.Extensions.DependencyInjection;
 using Serilog;
@@ -13,6 +14,7 @@ builder.Host.UseSerilog();
 builder.Services
     .AddInfrastructure(builder.Configuration)
     .AddApplication();
+builder.Services.AddGrpc();
 builder.Services.AddRouting(options => { options.LowercaseUrls = true; });
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -34,6 +36,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGrpcService<EmployeesService>();
 
 app.Run();
 
