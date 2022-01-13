@@ -19,7 +19,7 @@ public static class MigrateDatabaseExtension
         }
         catch (Exception e)
         {
-            var logger = services.GetRequiredService<ILogger>();
+            var logger = services.GetRequiredService<ILogger<TDbContext>>();
             logger.LogError(e, "An error occurred while migrating the database");
         }
 
