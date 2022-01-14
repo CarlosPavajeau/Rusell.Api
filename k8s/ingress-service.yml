@@ -38,3 +38,10 @@ spec:
                 name: rusell-routes-service
                 port:
                   number: 80
+          - path: /api/vehicles
+            pathType: Prefix
+            backend:
+              service:
+                name: rusell-vehicles-service
+                port:
+                  number: 80
