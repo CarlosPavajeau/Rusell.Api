@@ -53,6 +53,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{A177CB9E-FAB
 		k8s\employees-deploy.yml = k8s\employees-deploy.yml
 		k8s\routes-deploy.yml = k8s\routes-deploy.yml
 		k8s\vehicles-deploy.yml = k8s\vehicles-deploy.yml
+		k8s\logging-deploy.yml = k8s\logging-deploy.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Employees", "test\src\Test.Employees\Test.Employees.csproj", "{1846D8C5-B5EC-407B-8251-6E7587F9706C}"
