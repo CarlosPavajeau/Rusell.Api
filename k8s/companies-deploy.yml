@@ -17,6 +17,13 @@ spec:
       containers:
         - name: rusell-companies
           image: cantte/rusell.companies-api:latest
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
 ---
 apiVersion: v1
 kind: Service
@@ -31,3 +38,7 @@ spec:
       targetPort: 80
       protocol: TCP
       name: rusell-companies
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: rusell-companies-https

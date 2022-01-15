@@ -17,6 +17,13 @@ spec:
       containers:
         - name: rusell-employees
           image: cantte/rusell.employees-api:latest
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
 ---
 apiVersion: v1
 kind: Service
@@ -31,6 +38,10 @@ spec:
       targetPort: 80
       protocol: TCP
       name: rusell-employees
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: rusell-employees-https
     - port: 300
       targetPort: 300
       protocol: TCP
