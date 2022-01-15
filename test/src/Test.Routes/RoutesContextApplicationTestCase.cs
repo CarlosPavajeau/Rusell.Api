@@ -1,4 +1,5 @@
 using System.Net.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Rusell.Routes.Api;
 using Xunit;
 
@@ -19,4 +20,6 @@ public class RoutesContextApplicationTestCase : IClassFixture<RoutesWebApplicati
     {
         Client = _factory.GetAuthenticatedClient();
     }
+
+    protected IServiceScope CreateScope() => _factory.Server.Services.CreateScope();
 }
