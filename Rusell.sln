@@ -55,6 +55,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{A177CB9E-FAB
 		k8s\vehicles-deploy.yml = k8s\vehicles-deploy.yml
 		k8s\logging-deploy.yml = k8s\logging-deploy.yml
 		k8s\staging_issuer.yml = k8s\staging_issuer.yml
+		k8s\clients-deploy.yml = k8s\clients-deploy.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Employees", "test\src\Test.Employees\Test.Employees.csproj", "{1846D8C5-B5EC-407B-8251-6E7587F9706C}"
@@ -66,6 +67,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Vehicles", "test\src\Test.Vehicles\Test.Vehicles.csproj", "{2268733F-A38C-4636-9312-EC9656928D6A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Employees.Api", "test\apps\Test.Employees.Api\Test.Employees.Api.csproj", "{B9C79904-4FEB-40B4-BFE0-F18F08BE37BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clients", "src\Clients\Clients.csproj", "{C293A95F-FD68-499B-AC76-CAAAC63B2465}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clients.Api", "apps\Clients.Api\Clients.Api.csproj", "{8D7D1573-64B5-4706-9AED-9B1295D9AAA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,6 +101,8 @@ Global
 		{78D48636-5C17-4AF8-8818-F1F5ECDB198D} = {882F1C46-DFA6-46EF-9C93-26C4A0C62D0F}
 		{2268733F-A38C-4636-9312-EC9656928D6A} = {0E960D64-5DE1-433D-8456-B82244DA8E32}
 		{B9C79904-4FEB-40B4-BFE0-F18F08BE37BD} = {AC158A59-206F-421C-A848-73CC151E0E10}
+		{C293A95F-FD68-499B-AC76-CAAAC63B2465} = {A6016F2C-92DE-47A1-8EC9-1DB924D9AAEB}
+		{8D7D1573-64B5-4706-9AED-9B1295D9AAA7} = {882F1C46-DFA6-46EF-9C93-26C4A0C62D0F}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{764E0BCE-5465-4772-B966-5E7865DD82E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -182,5 +189,13 @@ Global
 		{B9C79904-4FEB-40B4-BFE0-F18F08BE37BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9C79904-4FEB-40B4-BFE0-F18F08BE37BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9C79904-4FEB-40B4-BFE0-F18F08BE37BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C293A95F-FD68-499B-AC76-CAAAC63B2465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C293A95F-FD68-499B-AC76-CAAAC63B2465}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C293A95F-FD68-499B-AC76-CAAAC63B2465}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C293A95F-FD68-499B-AC76-CAAAC63B2465}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D7D1573-64B5-4706-9AED-9B1295D9AAA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D7D1573-64B5-4706-9AED-9B1295D9AAA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D7D1573-64B5-4706-9AED-9B1295D9AAA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D7D1573-64B5-4706-9AED-9B1295D9AAA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

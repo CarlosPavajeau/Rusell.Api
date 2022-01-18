@@ -7,4 +7,5 @@ public static class Assemblies
     public static string Routes => "Rusell.Routes";
     public static string Employees => "Rusell.Employees";
     public static string Vehicles => "Rusell.Vehicles";
+    public static string Clients => "Rusell.Clients";
 }

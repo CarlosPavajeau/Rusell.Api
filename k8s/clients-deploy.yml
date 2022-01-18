@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rusell-clients-deploy
+  labels:
+    app: rusell-clients
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rusell-clients
+  template:
+    metadata:
+      labels:
+        app: rusell-clients
+    spec:
+      containers:
+        - name: rusell-clients
+          image: cantte/rusell.clients-api:latest
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rusell-clients-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rusell-clients
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: rusell-clients
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: rusell-clients-https
