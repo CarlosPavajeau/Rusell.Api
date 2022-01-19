@@ -1,3 +1,4 @@
+using Rusell.Clients.Application.Find;
 using Rusell.Shared;
 using Rusell.Shared.Helpers;
 
@@ -8,6 +9,7 @@ public static class Application
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         services.AddScoped<ClientCreator, ClientCreator>();
+        services.AddScoped<ClientFinder, ClientFinder>();
 
         services.AddDomainEventSubscriberInformationService(AssemblyHelper.GetInstance(Assemblies.Clients));
 
