@@ -7,17 +7,17 @@ on:
     tags: [ 'v*.*.*' ]
     
     paths:
-      - src/Employees/*
-      - src/Shared/*
-      - apps/Employees.Api/*
+      - src/Employees/**
+      - src/Shared/**
+      - apps/Employees.Api/**
       - .github/workflows/employees-api.yml
   pull_request:
     branches: [ develop ]
     
     paths:
-      - src/Employees/*
-      - src/Shared/*
-      - apps/Employees.Api/*
+      - src/Employees/**
+      - src/Shared/**
+      - apps/Employees.Api/**
       - .github/workflows/employees-api.yml
 
 env:

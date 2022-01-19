@@ -7,17 +7,17 @@ on:
     tags: [ 'v*.*.*' ]
     
     paths:
-      - src/Clients/*
-      - src/Shared/*
-      - apps/Clients.Api/*
+      - src/Clients/**
+      - src/Shared/**
+      - apps/Clients.Api/**
       - .github/workflows/clients-api.yml
   pull_request:
     branches: [ develop ]
     
     paths:
-      - src/Clients/*
-      - src/Shared/*
-      - apps/Clients.Api/*
+      - src/Clients/**
+      - src/Shared/**
+      - apps/Clients.Api/**
       - .github/workflows/clients-api.yml
 
 env:

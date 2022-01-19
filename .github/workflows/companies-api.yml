@@ -7,17 +7,17 @@ on:
     tags: [ 'v*.*.*' ]
     
     paths:
-      - src/Companies/*
-      - src/Shared/*
-      - apps/Companies.Api/*
+      - src/Companies/**
+      - src/Shared/**
+      - apps/Companies.Api/**
       - .github/workflows/companies-api.yml
   pull_request:
     branches: [ develop ]
     
     paths:
-      - src/Companies/*
-      - src/Shared/*
-      - apps/Companies.Api/*
+      - src/Companies/**
+      - src/Shared/**
+      - apps/Companies.Api/**
       - .github/workflows/companies-api.yml
 
 env:

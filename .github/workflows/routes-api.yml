@@ -7,17 +7,17 @@ on:
     tags: [ 'v*.*.*' ]
     
     paths:
-      - src/Routes/*
-      - src/Shared/*
-      - apps/Routes.Api/*
+      - src/Routes/**
+      - src/Shared/**
+      - apps/Routes.Api/**
       - .github/workflows/routes-api.yml
   pull_request:
     branches: [ develop ]
     
     paths:
-      - src/Routes/*
-      - src/Shared/*
-      - apps/Routes.Api/*
+      - src/Routes/**
+      - src/Shared/**
+      - apps/Routes.Api/**
       - .github/workflows/routes-api.yml
 
 env:

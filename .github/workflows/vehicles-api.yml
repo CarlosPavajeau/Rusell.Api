@@ -7,17 +7,17 @@ on:
     tags: [ 'v*.*.*' ]
     
     paths:
-      - src/Vehicles/*
-      - src/Shared/*
-      - apps/Vehicles.Api/*
+      - src/Vehicles/**
+      - src/Shared/**
+      - apps/Vehicles.Api/**
       - .github/workflows/vehicles-api.yml
   pull_request:
     branches: [ develop ]
     
     paths:
-      - src/Vehicles/*
-      - src/Shared/*
-      - apps/Vehicles.Api/*
+      - src/Vehicles/**
+      - src/Shared/**
+      - apps/Vehicles.Api/**
       - .github/workflows/vehicles-api.yml
 
 env:

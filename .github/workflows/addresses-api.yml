@@ -7,17 +7,17 @@ on:
     tags: [ 'v*.*.*' ]
     
     paths:
-      - src/Addresses/*
-      - src/Shared/*
-      - apps/Addresses.Api/*
+      - src/Addresses/**
+      - src/Shared/**
+      - apps/Addresses.Api/**
       - .github/workflows/addresses-api.yml
   pull_request:
     branches: [ develop ]
     
     paths:
-      - src/Addresses/*
-      - src/Shared/*
-      - apps/Addresses.Api/*
+      - src/Addresses/**
+      - src/Shared/**
+      - apps/Addresses.Api/**
       - .github/workflows/addresses-api.yml
 
 env:
