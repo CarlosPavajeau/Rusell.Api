@@ -9,7 +9,7 @@ using Rusell.Addresses.Api.Controllers.Requests;
 using Rusell.Test.Shared.Domain;
 using Xunit;
 
-namespace Test.Addresses.Api.Controllers;
+namespace Rusell.Test.Addresses.Api.Controllers;
 
 public class AddressesControllerTest : AddressesContextApplicationTestCase
 {

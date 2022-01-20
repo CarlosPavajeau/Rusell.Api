@@ -5,6 +5,10 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>Rusell.Test.Addresses.Api</AssemblyName>
+
+    <RootNamespace>Rusell.Test.Addresses.Api</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -7,7 +7,7 @@ using Rusell.Shared.Domain.Bus.Event;
 using Rusell.Test.Shared.Domain;
 using Xunit;
 
-namespace Test.Addresses.Application.Create;
+namespace Rusell.Test.Addresses.Application.Create;
 
 public class CreateAddressCommandHandlerTest : AddressesUnitTestCase
 {

@@ -10,7 +10,7 @@ using Rusell.Addresses.Shared.Infrastructure.Persistence.EntityFramework;
 using Rusell.Shared.Helpers;
 using Rusell.Test.Shared.Infrastructure;
 
-namespace Test.Addresses;
+namespace Rusell.Test.Addresses;
 
 public class AddressesContextInfrastructureTestCase : InfrastructureTestCase<Program>
 {

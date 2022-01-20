@@ -2,7 +2,7 @@ using Moq;
 using Rusell.Addresses.Domain;
 using Rusell.Test.Shared.Infrastructure;
 
-namespace Test.Addresses;
+namespace Rusell.Test.Addresses;
 
 public abstract class AddressesUnitTestCase : UnitTestCase
 {

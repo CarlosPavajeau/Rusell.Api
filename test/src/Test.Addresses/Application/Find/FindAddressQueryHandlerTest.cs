@@ -7,7 +7,7 @@ using Rusell.Addresses.Application.Find;
 using Rusell.Addresses.Domain;
 using Xunit;
 
-namespace Test.Addresses.Application.Find;
+namespace Rusell.Test.Addresses.Application.Find;
 
 public class FindAddressQueryHandlerTest : AddressesUnitTestCase
 {

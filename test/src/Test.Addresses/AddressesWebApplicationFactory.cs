@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Rusell.Addresses.Shared.Infrastructure.Persistence.EntityFramework;
 using Rusell.Test.Shared.Infrastructure;
 
-namespace Test.Addresses;
+namespace Rusell.Test.Addresses;
 
 public class AddressesWebApplicationFactory<TStartup> : ApplicationTestCase<TStartup> where TStartup : class
 {

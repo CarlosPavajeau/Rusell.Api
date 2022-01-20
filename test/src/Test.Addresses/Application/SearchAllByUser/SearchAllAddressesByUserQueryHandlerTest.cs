@@ -9,7 +9,7 @@ using Rusell.Addresses.Application.SearchAllByUser;
 using Rusell.Addresses.Domain;
 using Xunit;
 
-namespace Test.Addresses.Application.SearchAllByUser;
+namespace Rusell.Test.Addresses.Application.SearchAllByUser;
 
 public class SearchAllAddressesByUserQueryHandlerTest : AddressesUnitTestCase
 {

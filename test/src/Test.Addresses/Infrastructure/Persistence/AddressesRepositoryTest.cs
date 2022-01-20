@@ -6,7 +6,7 @@ using Rusell.Shared.Domain.ValueObject;
 using Rusell.Test.Shared.Domain;
 using Xunit;
 
-namespace Test.Addresses.Infrastructure.Persistence;
+namespace Rusell.Test.Addresses.Infrastructure.Persistence;
 
 public class AddressesRepositoryTest : AddressesContextInfrastructureTestCase
 {

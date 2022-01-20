@@ -2,7 +2,7 @@ using System.Net.Http;
 using Rusell.Addresses.Api;
 using Xunit;
 
-namespace Test.Addresses;
+namespace Rusell.Test.Addresses;
 
 public class AddressesContextApplicationTestCase : IClassFixture<AddressesWebApplicationFactory<Program>>
 {
