@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: rusell-addresses
-          image: cantte/rusell.address-api:latest
+          image: cantte/rusell.address-api:develop
           resources:
             limits:
               cpu: 100m

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: rusell-routes
-          image: cantte/rusell.routes-api:latest
+          image: cantte/rusell.routes-api:develop
           resources:
             limits:
               cpu: 100m

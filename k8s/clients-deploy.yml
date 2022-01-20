@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: rusell-clients
-          image: cantte/rusell.clients-api:latest
+          image: cantte/rusell.clients-api:develop
           resources:
             limits:
               cpu: 100m

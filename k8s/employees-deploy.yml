@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: rusell-employees
-          image: cantte/rusell.employees-api:latest
+          image: cantte/rusell.employees-api:develop
           resources:
             limits:
               cpu: 100m

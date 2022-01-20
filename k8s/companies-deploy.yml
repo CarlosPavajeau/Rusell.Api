@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: rusell-companies
-          image: cantte/rusell.companies-api:latest
+          image: cantte/rusell.companies-api:develop
           resources:
             limits:
               cpu: 100m
