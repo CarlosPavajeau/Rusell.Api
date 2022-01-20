@@ -1,4 +1,5 @@
 using System.Net.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Rusell.Vehicles.Api;
 using Xunit;
 
@@ -19,4 +20,6 @@ public class VehiclesContextApplicationTestCase : IClassFixture<VehiclesWebAppli
     {
         Client = _factory.GetAuthenticatedClient();
     }
+
+    protected IServiceScope CreateScope() => _factory.Server.Services.CreateScope();
 }
