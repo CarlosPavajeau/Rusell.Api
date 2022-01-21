@@ -14,6 +14,7 @@ using Rusell.BankDrafts.Infrastructure.Persistence;
 using Rusell.BankDrafts.Shared.Infrastructure.Persistence.EntityFramework;
 using Rusell.Shared.Domain.Persistence;
 using Rusell.Shared.Extensions.DependencyInjection;
+using Rusell.Shared.Infrastructure.Bus.Event.RabbitMq;
 using Rusell.Shared.Infrastructure.Persistence;
 
 namespace Rusell.BankDrafts.Api.Extensions.DependencyInjection;
@@ -44,6 +45,7 @@ public static class Infrastructure
         services.AddScoped<IUnitWork, UnitWork>();
 
         services.AddRabbitMq(configuration);
+        services.AddHostedService<RabbitMqBusSubscriber>();
 
         TypeAdapterConfig.GlobalSettings.Scan(AssemblyHelper.GetInstance(Assemblies.BankDrafts));
 
