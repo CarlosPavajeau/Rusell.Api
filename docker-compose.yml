@@ -6,6 +6,11 @@ services:
     build:
       context: .
       dockerfile: apps/Addresses.Api/Dockerfile
+  bank-drafts-api:
+    image: cantte/rusell.bank-drafts-api
+    build:
+      context: .
+      dockerfile: apps/BankDrafts.Api/Dockerfile
   clients-api:
     image: cantte/rusell.clients-api
     build:

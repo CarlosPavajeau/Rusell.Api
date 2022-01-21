@@ -56,6 +56,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{A177CB9E-FAB
 		k8s\logging-deploy.yml = k8s\logging-deploy.yml
 		k8s\staging_issuer.yml = k8s\staging_issuer.yml
 		k8s\clients-deploy.yml = k8s\clients-deploy.yml
+		k8s\bank-drafts-deploy.yml = k8s\bank-drafts-deploy.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Employees", "test\src\Test.Employees\Test.Employees.csproj", "{1846D8C5-B5EC-407B-8251-6E7587F9706C}"
@@ -75,6 +76,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Vehicles.Api", "test\apps\Test.Vehicles.Api\Test.Vehicles.Api.csproj", "{C390F6DF-E4F7-474B-9EED-54B75DDA4FFF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Clients", "test\src\Test.Clients\Test.Clients.csproj", "{5A411B3E-EB1D-434E-9364-207F5E8605C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankDrafts", "src\BankDrafts\BankDrafts.csproj", "{4EF283AE-86D0-4E50-8547-EB697EA76DA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankDrafts.Api", "apps\BankDrafts.Api\BankDrafts.Api.csproj", "{8C6D760F-EF97-402A-92C3-1D39F7BF9FEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +114,8 @@ Global
 		{8D7D1573-64B5-4706-9AED-9B1295D9AAA7} = {882F1C46-DFA6-46EF-9C93-26C4A0C62D0F}
 		{C390F6DF-E4F7-474B-9EED-54B75DDA4FFF} = {AC158A59-206F-421C-A848-73CC151E0E10}
 		{5A411B3E-EB1D-434E-9364-207F5E8605C5} = {0E960D64-5DE1-433D-8456-B82244DA8E32}
+		{4EF283AE-86D0-4E50-8547-EB697EA76DA1} = {A6016F2C-92DE-47A1-8EC9-1DB924D9AAEB}
+		{8C6D760F-EF97-402A-92C3-1D39F7BF9FEF} = {882F1C46-DFA6-46EF-9C93-26C4A0C62D0F}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{764E0BCE-5465-4772-B966-5E7865DD82E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -211,5 +218,13 @@ Global
 		{5A411B3E-EB1D-434E-9364-207F5E8605C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A411B3E-EB1D-434E-9364-207F5E8605C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A411B3E-EB1D-434E-9364-207F5E8605C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF283AE-86D0-4E50-8547-EB697EA76DA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF283AE-86D0-4E50-8547-EB697EA76DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF283AE-86D0-4E50-8547-EB697EA76DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF283AE-86D0-4E50-8547-EB697EA76DA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C6D760F-EF97-402A-92C3-1D39F7BF9FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C6D760F-EF97-402A-92C3-1D39F7BF9FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C6D760F-EF97-402A-92C3-1D39F7BF9FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C6D760F-EF97-402A-92C3-1D39F7BF9FEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

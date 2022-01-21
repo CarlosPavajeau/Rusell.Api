@@ -8,4 +8,5 @@ public static class Assemblies
     public static string Employees => "Rusell.Employees";
     public static string Vehicles => "Rusell.Vehicles";
     public static string Clients => "Rusell.Clients";
+    public static string BankDrafts => "Rusell.BankDrafts";
 }

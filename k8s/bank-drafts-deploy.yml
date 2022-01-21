@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rusell-bank-drafts-deploy
+  labels:
+    app: rusell-bank-drafts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rusell-bank-drafts
+  template:
+    metadata:
+      labels:
+        app: rusell-bank-drafts
+    spec:
+      containers:
+        - name: rusell-bank-drafts
+          image: cantte/rusell.bank-drafts-api:develop
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rusell-bank-drafts-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rusell-bank-drafts
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: rusell-bank-drafts
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: rusell-bank-drafts-https
