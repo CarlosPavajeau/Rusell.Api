@@ -24,7 +24,7 @@ public class BankDraftConfiguration : IEntityTypeConfiguration<BankDraft>
 
         builder.OwnsOne(x => x.Cost)
             .Property(x => x.Value)
-            .HasColumnName(nameof(BankDraft.Company).ToDatabaseFormat());
+            .HasColumnName(nameof(BankDraft.Cost).ToDatabaseFormat());
 
         builder.OwnsOne(x => x.Total)
             .Property(x => x.Value)
