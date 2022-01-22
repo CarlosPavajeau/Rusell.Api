@@ -1,3 +1,6 @@
+using Rusell.BankDrafts.Application.SearchAllByReceiver;
+using Rusell.BankDrafts.Application.SearchAllBySender;
+
 namespace Rusell.BankDrafts.Api.Extensions.DependencyInjection;
 
 public static class Application
@@ -9,6 +12,8 @@ public static class Application
         services.AddScoped<EmployeeCreator, EmployeeCreator>();
 
         services.AddScoped<BankDraftCreator, BankDraftCreator>();
+        services.AddScoped<BankDraftsByReceiverSearcher, BankDraftsByReceiverSearcher>();
+        services.AddScoped<BankDraftsBySenderSearcher, BankDraftsBySenderSearcher>();
 
         services.AddDomainEventSubscriberInformationService(AssemblyHelper.GetInstance(Assemblies.BankDrafts));
 

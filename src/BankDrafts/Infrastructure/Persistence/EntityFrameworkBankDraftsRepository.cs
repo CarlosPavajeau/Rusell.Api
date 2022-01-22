@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Rusell.BankDrafts.Domain;
 using Rusell.Shared.Infrastructure.Repository;
@@ -20,5 +21,17 @@ public class EntityFrameworkBankDraftsRepository : Repository<BankDraft, BankDra
             .Include(x => x.Receiver)
             .Include(x => x.Company)
             .FirstOrDefaultAsync(x => x.Id == key);
+    }
+
+    public override async Task<IEnumerable<BankDraft>> SearchAll(Expression<Func<BankDraft, bool>> predicate)
+    {
+        return await Context.Set<BankDraft>()
+            .AsNoTracking()
+            .Include(x => x.Dispatcher)
+            .Include(x => x.Sender)
+            .Include(x => x.Receiver)
+            .Include(x => x.Company)
+            .Where(predicate)
+            .ToListAsync();
     }
 }
