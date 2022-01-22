@@ -11,7 +11,7 @@ public class CreateBankDraftCommandToBankDraft : IRegister
         config.NewConfig<CreateBankDraftCommand, BankDraft>()
             .MapWith(v => new BankDraftBuilder()
                 .WithId(Guid.NewGuid())
-                .WithDate(DateTime.Now)
+                .WithDate(DateTime.UtcNow)
                 .WithAmount(v.Amount)
                 .WithCost(v.Cost)
                 .WithTotal(v.Amount + v.Cost)
