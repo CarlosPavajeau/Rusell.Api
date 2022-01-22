@@ -44,7 +44,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees.Api", "apps\Emplo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{A177CB9E-FAB8-495D-AF00-AC9EC1DC4EC1}"
 	ProjectSection(SolutionItems) = preProject
-		k8s\posgres-deploy.yml = k8s\posgres-deploy.yml
 		k8s\local-pvc.yml = k8s\local-pvc.yml
 		k8s\addresses-deploy.yml = k8s\addresses-deploy.yml
 		k8s\ingress-service.yml = k8s\ingress-service.yml
@@ -53,7 +52,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{A177CB9E-FAB
 		k8s\employees-deploy.yml = k8s\employees-deploy.yml
 		k8s\routes-deploy.yml = k8s\routes-deploy.yml
 		k8s\vehicles-deploy.yml = k8s\vehicles-deploy.yml
-		k8s\logging-deploy.yml = k8s\logging-deploy.yml
 		k8s\staging_issuer.yml = k8s\staging_issuer.yml
 		k8s\clients-deploy.yml = k8s\clients-deploy.yml
 		k8s\bank-drafts-deploy.yml = k8s\bank-drafts-deploy.yml
@@ -80,6 +78,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankDrafts", "src\BankDrafts\BankDrafts.csproj", "{4EF283AE-86D0-4E50-8547-EB697EA76DA1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankDrafts.Api", "apps\BankDrafts.Api\BankDrafts.Api.csproj", "{8C6D760F-EF97-402A-92C3-1D39F7BF9FEF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "elk", "elk", "{F2220D10-9D10-4351-9934-601EE1CE1EA6}"
+	ProjectSection(SolutionItems) = preProject
+		k8s\elk\logging-deploy.yml = k8s\elk\logging-deploy.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db", "db", "{C01DD24D-28DF-4305-92DB-9C21BD1F8A1F}"
+	ProjectSection(SolutionItems) = preProject
+		k8s\db\posgres-deploy.yml = k8s\db\posgres-deploy.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -116,6 +124,8 @@ Global
 		{5A411B3E-EB1D-434E-9364-207F5E8605C5} = {0E960D64-5DE1-433D-8456-B82244DA8E32}
 		{4EF283AE-86D0-4E50-8547-EB697EA76DA1} = {A6016F2C-92DE-47A1-8EC9-1DB924D9AAEB}
 		{8C6D760F-EF97-402A-92C3-1D39F7BF9FEF} = {882F1C46-DFA6-46EF-9C93-26C4A0C62D0F}
+		{F2220D10-9D10-4351-9934-601EE1CE1EA6} = {A177CB9E-FAB8-495D-AF00-AC9EC1DC4EC1}
+		{C01DD24D-28DF-4305-92DB-9C21BD1F8A1F} = {A177CB9E-FAB8-495D-AF00-AC9EC1DC4EC1}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{764E0BCE-5465-4772-B966-5E7865DD82E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
