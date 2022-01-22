@@ -17,6 +17,7 @@ spec:
       containers:
         - name: rusell-routes
           image: cantte/rusell.routes-api:develop
+          imagePullPolicy: Always
           resources:
             limits:
               cpu: 100m

@@ -17,6 +17,7 @@ spec:
       containers:
         - name: rusell-bank-drafts
           image: cantte/rusell.bank-drafts-api:develop
+          imagePullPolicy: Always
           resources:
             limits:
               cpu: 100m

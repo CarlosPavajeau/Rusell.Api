@@ -17,6 +17,7 @@ spec:
       containers:
         - name: rusell-companies
           image: cantte/rusell.companies-api:develop
+          imagePullPolicy: Always
           resources:
             limits:
               cpu: 100m

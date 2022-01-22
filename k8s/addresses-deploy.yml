@@ -17,6 +17,7 @@ spec:
       containers:
         - name: rusell-addresses
           image: cantte/rusell.address-api:develop
+          imagePullPolicy: Always
           resources:
             limits:
               cpu: 100m

@@ -17,6 +17,7 @@ spec:
       containers:
         - name: rusell-vehicles
           image: cantte/rusell.vehicles-api:develop
+          imagePullPolicy: Always
           resources:
             limits:
               cpu: 100m
