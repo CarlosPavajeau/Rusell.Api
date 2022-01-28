@@ -35,3 +35,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+#pragma warning disable CA1050 // Declare types in namespaces
+namespace Rusell.BankDrafts.Api
+{
+    public class Program
+    {
+        // For testing purposes
+    }
+}
+#pragma warning restore CA1050 // Declare types in namespaces
