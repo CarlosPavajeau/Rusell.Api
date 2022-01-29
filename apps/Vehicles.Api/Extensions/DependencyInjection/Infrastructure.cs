@@ -1,8 +1,4 @@
-using Mapster;
 using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Rusell.Employees.Api;
 using Rusell.Shared.Domain.Persistence;
 using Rusell.Shared.Extensions.DependencyInjection;
@@ -25,16 +21,7 @@ public static class Infrastructure
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddBearerTokenAuthentication(configuration);
-
-        services.AddDbContext<VehiclesDbContext>(options =>
-        {
-            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
-                .UseSnakeCaseNamingConvention()
-                .EnableDetailedErrors();
-        }, ServiceLifetime.Transient);
-
-        services.AddScoped<VehiclesDbContext, VehiclesDbContext>();
-        services.AddScoped<DbContext, VehiclesDbContext>();
+        services.AddDbContextNpgsql<VehiclesDbContext>(configuration.GetConnectionString("DefaultConnection"));
 
         services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Vehicles));
         services.AddMediatR(typeof(Program));
@@ -44,12 +31,10 @@ public static class Infrastructure
         services.AddScoped<ILegalInformationRepository, EntityFrameworkLegalInformationRepository>();
         services.AddScoped<IUnitWork, UnitWork>();
 
-        services.AddRabbitMq(configuration);
-
+        services.AddMapping(Assemblies.Vehicles)
+            .AddRabbitMq(configuration);
         services.AddHostedService<RabbitMqBusSubscriber>();
         services.AddHostedService<SearchAndCreateEmployees>();
-
-        TypeAdapterConfig.GlobalSettings.Scan(AssemblyHelper.GetInstance(Assemblies.Vehicles));
 
         services.AddGrpcClient<GrpcEmployees.GrpcEmployeesClient>((grpcServices, options) =>
         {
@@ -59,20 +44,5 @@ public static class Infrastructure
         services.AddScoped<IEmployeesService, EmployeesService>();
 
         return services;
-    }
-
-    private static void AddBearerTokenAuthentication(this IServiceCollection services, IConfiguration configuration)
-    {
-        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
-                c =>
-                {
-                    c.Authority = $"https://{configuration["Auth0:Domain"]}/";
-                    c.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidAudience = configuration["Auth0:Audience"],
-                        ValidIssuer = $"{configuration["Auth0:Domain"]}"
-                    };
-                });
     }
 }

@@ -1,4 +1,4 @@
-using Rusell.Routes.Api.Extensions;
+using Rusell.Routes.Api.Extensions.DependencyInjection;
 using Rusell.Routes.Shared.Infrastructure.Persistence.EntityFramework;
 using Rusell.Shared.Extensions.DependencyInjection;
 using Serilog;

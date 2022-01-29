@@ -4,7 +4,7 @@ using Rusell.Addresses.Application.SearchAllByUser;
 using Rusell.Shared;
 using Rusell.Shared.Helpers;
 
-namespace Rusell.Addresses.Api.Extensions;
+namespace Rusell.Addresses.Api.Extensions.DependencyInjection;
 
 public static class Application
 {

@@ -4,7 +4,7 @@ using Rusell.Companies.Application.FindByNit;
 using Rusell.Shared;
 using Rusell.Shared.Helpers;
 
-namespace Rusell.Companies.Api.Extensions;
+namespace Rusell.Companies.Api.Extensions.DependencyInjection;
 
 public static class Application
 {

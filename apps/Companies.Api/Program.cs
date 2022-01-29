@@ -1,4 +1,4 @@
-using Rusell.Companies.Api.Extensions;
+using Rusell.Companies.Api.Extensions.DependencyInjection;
 using Rusell.Companies.Shared.Infrastructure.Persistence.EntityFramework;
 using Rusell.Shared.Extensions.DependencyInjection;
 using Serilog;

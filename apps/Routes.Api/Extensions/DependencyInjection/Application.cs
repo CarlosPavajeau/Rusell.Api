@@ -6,7 +6,7 @@ using Rusell.Routes.Companies.Application.Create;
 using Rusell.Shared;
 using Rusell.Shared.Helpers;
 
-namespace Rusell.Routes.Api.Extensions;
+namespace Rusell.Routes.Api.Extensions.DependencyInjection;
 
 public static class Application
 {

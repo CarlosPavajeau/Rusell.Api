@@ -1,13 +1,13 @@
 using MediatR;
-using Rusell.Employees.Domain;
-using Rusell.Employees.Infrastructure.Persistence;
-using Rusell.Employees.Shared.Infrastructure.Persistence.EntityFramework;
+using Rusell.Companies.Domain;
+using Rusell.Companies.Infrastructure.Persistence;
+using Rusell.Companies.Shared.Infrastructure.Persistence.EntityFramework;
 using Rusell.Shared.Domain.Persistence;
 using Rusell.Shared.Extensions.DependencyInjection;
 using Rusell.Shared.Helpers;
 using Rusell.Shared.Infrastructure.Persistence;
 
-namespace Rusell.Employees.Api.Extensions.DependencyInjection;
+namespace Rusell.Companies.Api.Extensions.DependencyInjection;
 
 public static class Infrastructure
 {
@@ -15,15 +15,15 @@ public static class Infrastructure
         IConfiguration configuration)
     {
         services.AddBearerTokenAuthentication(configuration);
-        services.AddDbContextNpgsql<EmployeesDbContext>(configuration.GetConnectionString("DefaultConnection"));
+        services.AddDbContextNpgsql<CompaniesDbContext>(configuration.GetConnectionString("DefaultConnection"));
 
-        services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Employees));
+        services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Companies));
         services.AddMediatR(typeof(Program));
 
-        services.AddScoped<IEmployeesRepository, EntityFrameworkEmployeesRepository>();
+        services.AddScoped<ICompaniesRepository, EntityFrameworkCompaniesRepository>();
         services.AddScoped<IUnitWork, UnitWork>();
 
-        services.AddMapping(Assemblies.Employees)
+        services.AddMapping(Assemblies.Companies)
             .AddRabbitMq(configuration);
 
         return services;
