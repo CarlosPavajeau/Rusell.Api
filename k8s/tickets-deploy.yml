@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rusell-tickets-deploy
+  labels:
+    app: rusell-tickets
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rusell-tickets
+  template:
+    metadata:
+      labels:
+        app: rusell-tickets
+    spec:
+      containers:
+        - name: rusell-tickets
+          image: cantte/rusell.tickets-api:develop
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rusell-tickets-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rusell-tickets
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: rusell-tickets
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: rusell-tickets-https

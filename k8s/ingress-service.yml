@@ -50,11 +50,32 @@ spec:
                 name: rusell-employees-service
                 port:
                   number: 80
+          - path: /api/parcels
+            pathType: Prefix
+            backend:
+              service:
+                name: rusell-parcels-service
+                port:
+                  number: 80
           - path: /api/routes
             pathType: Prefix
             backend:
               service:
                 name: rusell-routes-service
+                port:
+                  number: 80
+          - path: /api/tickets
+            pathType: Prefix
+            backend:
+              service:
+                name: rusell-tickets-service
+                port:
+                  number: 80
+          - path: /api/transport-sheets
+            pathType: Prefix
+            backend:
+              service:
+                name: rusell-transport-sheets-service
                 port:
                   number: 80
           - path: /api/vehicles

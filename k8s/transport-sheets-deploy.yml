@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rusell-transport-sheets-deploy
+  labels:
+    app: rusell-transport-sheets
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rusell-transport-sheets
+  template:
+    metadata:
+      labels:
+        app: rusell-transport-sheets
+    spec:
+      containers:
+        - name: rusell-transport-sheets
+          image: cantte/rusell.transport-sheets-api:develop
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rusell-transport-sheets-service
+spec:
+  type: ClusterIP
+  selector:
+    app: rusell-transport-sheets
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: rusell-transport-sheets
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: rusell-transport-sheets-https
