@@ -1,3 +1,7 @@
+using Rusell.Parcels.Application.Create;
+using Rusell.Parcels.Clients.Application.Create;
+using Rusell.Parcels.Companies.Application.Create;
+using Rusell.Parcels.Employees.Application.Create;
 using Rusell.Shared;
 using Rusell.Shared.Helpers;
 
@@ -7,6 +11,12 @@ public static class Application
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
+        services.AddScoped<ParcelCreator, ParcelCreator>();
+
+        services.AddScoped<ClientCreator, ClientCreator>();
+        services.AddScoped<CompanyCreator, CompanyCreator>();
+        services.AddScoped<EmployeeCreator, EmployeeCreator>();
+
         services.AddDomainEventSubscriberInformationService(AssemblyHelper.GetInstance(Assemblies.Parcels));
         return services;
     }
