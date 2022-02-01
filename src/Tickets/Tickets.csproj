@@ -9,13 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application"/>
-    <Folder Include="Domain"/>
-    <Folder Include="Infrastructure"/>
+    <ProjectReference Include="..\Shared\Shared.csproj"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Shared.csproj"/>
+    <PackageReference Include="BuilderGenerator" Version="2.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

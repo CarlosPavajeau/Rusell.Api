@@ -1,4 +1,6 @@
+using Rusell.Shared.Extensions.DependencyInjection;
 using Rusell.Tickets.Api.Extensions.DependencyInjection;
+using Rusell.Tickets.Shared.Infrastructure.Persistence.EntityFramework;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+if (app.Environment.IsProduction()) app.MigrateDatabase<TicketsDbContext>();
 
 if (app.Environment.IsDevelopment())
 {

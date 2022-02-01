@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers"/>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\src\Tickets\Tickets.csproj"/>
   </ItemGroup>
 
