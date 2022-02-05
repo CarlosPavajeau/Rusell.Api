@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Rusell.Companies.Domain;
+using Rusell.Shared.Domain.ValueObject;
 using Rusell.Shared.Infrastructure.Repository;
 
 namespace Rusell.Companies.Infrastructure.Persistence;
@@ -22,5 +23,12 @@ public class EntityFrameworkCompaniesRepository : Repository<Company, CompanyId>
         return await Context.Set<Company>()
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Nit!.Value == nit);
+    }
+
+    public async Task<Company?> FindByUser(UserId userId)
+    {
+        return await Context.Set<Company>()
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.UserId == userId);
     }
 }

@@ -1,6 +1,7 @@
 using Rusell.Companies.Application.Create;
 using Rusell.Companies.Application.Find;
 using Rusell.Companies.Application.FindByNit;
+using Rusell.Companies.Application.FindByUser;
 using Rusell.Shared;
 using Rusell.Shared.Helpers;
 
@@ -13,6 +14,7 @@ public static class Application
         services.AddScoped<CompanyCreator, CompanyCreator>();
         services.AddScoped<CompanyFinder, CompanyFinder>();
         services.AddScoped<CompanyByNitFinder, CompanyByNitFinder>();
+        services.AddScoped<CompanyByUserFinder, CompanyByUserFinder>();
 
         services.AddDomainEventSubscriberInformationService(AssemblyHelper.GetInstance(Assemblies.Companies));
 
