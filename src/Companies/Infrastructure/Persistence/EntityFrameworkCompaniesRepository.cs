@@ -29,6 +29,6 @@ public class EntityFrameworkCompaniesRepository : Repository<Company, CompanyId>
     {
         return await Context.Set<Company>()
             .AsNoTracking()
-            .FirstOrDefaultAsync(x => x.UserId == userId);
+            .FirstOrDefaultAsync(x => x.UserId.Value == userId.Value);
     }
 }
