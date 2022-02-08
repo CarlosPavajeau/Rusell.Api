@@ -42,5 +42,11 @@ public class TransportSheetConfiguration : IEntityTypeConfiguration<TransportShe
             .HasColumnName(nameof(TransportSheet.CompanyId).ToDatabaseFormat());
         builder.OwnsOne(x => x.CompanyId)
             .HasIndex(x => x.Value);
+
+        builder.OwnsOne(x => x.RouteId)
+            .Property(x => x.Value)
+            .HasColumnName(nameof(TransportSheet.RouteId).ToDatabaseFormat());
+        builder.OwnsOne(x => x.RouteId)
+            .HasIndex(x => x.Value);
     }
 }

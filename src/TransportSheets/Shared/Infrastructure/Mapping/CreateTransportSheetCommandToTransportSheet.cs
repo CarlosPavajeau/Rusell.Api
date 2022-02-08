@@ -15,6 +15,7 @@ public class CreateTransportSheetCommandToTransportSheet : IRegister
                 .WithQuota(v.Quota)
                 .WithVehicleLicensePlate(v.VehicleLicensePlate)
                 .WithDispatcherId(v.DispatcherId)
+                .WithRouteId(v.RouteId)
                 .WithCompanyId(v.CompanyId)
                 .Build());
     }

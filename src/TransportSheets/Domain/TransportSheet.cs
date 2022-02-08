@@ -7,7 +7,7 @@ public class TransportSheet : AggregateRoot
 {
     public TransportSheet(TransportSheetId id, TransportSheetDate date, TransportSheetDate departureTime,
         TransportSheetQuota quota, VehicleLicensePlate vehicleLicensePlate, EmployeeId dispatcherId,
-        CompanyId companyId)
+        CompanyId companyId, RouteId routeId)
     {
         Id = id;
         Date = date;
@@ -16,6 +16,7 @@ public class TransportSheet : AggregateRoot
         VehicleLicensePlate = vehicleLicensePlate;
         DispatcherId = dispatcherId;
         CompanyId = companyId;
+        RouteId = routeId;
     }
 
     internal TransportSheet()
@@ -34,4 +35,6 @@ public class TransportSheet : AggregateRoot
     public Employee Dispatcher { get; set; }
 
     public CompanyId CompanyId { get; set; }
+
+    public RouteId RouteId { get; set; }
 }

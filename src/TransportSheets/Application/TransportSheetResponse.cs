@@ -5,4 +5,5 @@ public record TransportSheetResponse(
     DateTime? DepartureTime,
     uint Quota,
     string VehicleLicensePlate,
+    Guid RouteId,
     string DispatcherName);

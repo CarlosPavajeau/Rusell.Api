@@ -6,6 +6,7 @@ public record CreateTransportSheetCommand(
     uint Quota,
     string VehicleLicensePlate,
     string DispatcherId,
+    Guid RouteId,
     Guid CompanyId) : Command<Guid>
 {
     public Guid CompanyId { get; set; }
