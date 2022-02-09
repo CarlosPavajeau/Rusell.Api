@@ -9,8 +9,12 @@ public static class VehicleMother
 {
     public static Vehicle Random() => Random(Guid.NewGuid());
 
-    public static Vehicle Random(Guid companyId) =>
-        new VehicleBuilder()
+    public static Vehicle Random(Guid companyId)
+    {
+        var ownerId = Guid.NewGuid().ToString();
+        var driverId = Guid.NewGuid().ToString();
+
+        return new VehicleBuilder()
             .WithLicensePlate(Guid.NewGuid().ToString())
             .WithInternalNumber(Guid.NewGuid().ToString())
             .WithPropertyCard(Guid.NewGuid().ToString())
@@ -22,10 +26,11 @@ public static class VehicleMother
             .WithChairs(10)
             .WithEngineNumber(Guid.NewGuid().ToString())
             .WithChassisNumber(Guid.NewGuid().ToString())
-            .WithOwnerId(WordMother.Random())
-            .WithOwner(new Employee(WordMother.Random(), WordMother.Random()))
-            .WithDriverId(WordMother.Random())
-            .WithDriver(new Employee(WordMother.Random(), WordMother.Random()))
+            .WithOwnerId(ownerId)
+            .WithOwner(new Employee(ownerId, WordMother.Random()))
+            .WithDriverId(driverId)
+            .WithDriver(new Employee(driverId, WordMother.Random()))
             .WithCompanyId(companyId)
             .Build();
+    }
 }
