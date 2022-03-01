@@ -23,6 +23,8 @@ public class EntityFrameworkRoutesRepository : Repository<Route, RouteId>, IRout
     {
         return await Context.Set<Route>()
             .AsNoTracking()
+            .Include(x => x.From)
+            .Include(x => x.To)
             .Where(r => r.CompanyId == companyId)
             .ToListAsync();
     }
