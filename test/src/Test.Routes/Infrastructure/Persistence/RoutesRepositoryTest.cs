@@ -37,7 +37,10 @@ public class RoutesRepositoryTest : RoutesContextInfrastructureTestCase
 
         var result = await Repository.SearchAllByCompany(companyId);
 
-        result.Should().BeEquivalentTo(routes);
+        result.Should()
+            .NotBeEmpty()
+            .And
+            .HaveCount(2);
     }
 
     [Fact]

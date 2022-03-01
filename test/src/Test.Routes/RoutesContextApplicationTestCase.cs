@@ -1,5 +1,8 @@
+using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Rusell.Routes.Addresses.Domain;
 using Rusell.Routes.Api;
 using Xunit;
 
@@ -22,4 +25,30 @@ public class RoutesContextApplicationTestCase : IClassFixture<RoutesWebApplicati
     }
 
     protected IServiceScope CreateScope() => _factory.Server.Services.CreateScope();
+
+    public async Task<(Guid, Guid)> CreateAddresses()
+    {
+        var addressFrom = new Address
+        {
+            Id = Guid.NewGuid(),
+            Country = "Colombia",
+            State = "Cesar",
+            City = "Pueblo Bello"
+        };
+        var addressTo = new Address
+        {
+            Id = Guid.NewGuid(),
+            Country = "Colombia",
+            State = "Cesar",
+            City = "Valledupar"
+        };
+
+        using var scope = CreateScope();
+        var addressRepository = scope.ServiceProvider.GetRequiredService<IAddressesRepository>();
+
+        await addressRepository.Save(addressFrom);
+        await addressRepository.Save(addressTo);
+
+        return (addressFrom.Id, addressTo.Id);
+    }
 }

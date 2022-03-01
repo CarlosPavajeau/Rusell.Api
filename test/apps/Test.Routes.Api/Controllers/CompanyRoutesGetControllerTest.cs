@@ -19,7 +19,8 @@ public class CompanyRoutesGetControllerTest : RoutesContextApplicationTestCase
     [Fact]
     public async Task GetCompanyRoutes_Returns_Ok()
     {
-        var createRouteRequest = new CreateRouteRequest(Guid.NewGuid(), Guid.NewGuid(), 15000, false, false);
+        var (fromId, toId) = await CreateAddresses();
+        var createRouteRequest = new CreateRouteRequest(fromId, toId, 15000, false, false);
         var companyId = Guid.NewGuid();
 
         var createResponse =
@@ -31,7 +32,10 @@ public class CompanyRoutesGetControllerTest : RoutesContextApplicationTestCase
 
         var routes = await response.Content.ReadFromJsonAsync<RouteResponse[]>();
 
-        routes.Should().NotBeNull();
-        routes.Should().NotBeEmpty();
+        routes.Should().NotBeNull()
+            .And
+            .NotBeEmpty()
+            .And
+            .HaveCount(1);
     }
 }
