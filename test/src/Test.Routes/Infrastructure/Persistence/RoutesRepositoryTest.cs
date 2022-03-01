@@ -4,6 +4,7 @@ using FluentAssertions;
 using Rusell.Routes.Addresses.Domain;
 using Rusell.Routes.Companies.Domain;
 using Rusell.Routes.Domain;
+using Rusell.Test.Routes.Domain;
 using Rusell.Test.Shared.Domain;
 using Xunit;
 
@@ -17,15 +18,7 @@ public class RoutesRepositoryTest : RoutesContextInfrastructureTestCase
     [Fact]
     public async Task Save_Should_Save_A_Route()
     {
-        var route = new Route
-        {
-            FromId = AddressId.From(Guid.NewGuid()),
-            ToId = AddressId.From(Guid.NewGuid()),
-            CompanyId = CompanyId.From(Guid.NewGuid()),
-            Cost = 15000,
-            IsCustomerDroppedOffAtHome = true,
-            IsCustomerPickedUpAtHome = false
-        };
+        var route = RouteMother.Random(Guid.NewGuid());
 
         await Repository.Save(route);
     }
@@ -36,24 +29,8 @@ public class RoutesRepositoryTest : RoutesContextInfrastructureTestCase
         var companyId = CompanyId.From(Guid.NewGuid());
         var routes = new[]
         {
-            new Route
-            {
-                FromId = AddressId.From(Guid.NewGuid()),
-                ToId = AddressId.From(Guid.NewGuid()),
-                CompanyId = companyId,
-                Cost = 15000,
-                IsCustomerDroppedOffAtHome = true,
-                IsCustomerPickedUpAtHome = false
-            },
-            new Route
-            {
-                FromId = AddressId.From(Guid.NewGuid()),
-                ToId = AddressId.From(Guid.NewGuid()),
-                CompanyId = companyId,
-                Cost = 15000,
-                IsCustomerDroppedOffAtHome = true,
-                IsCustomerPickedUpAtHome = false
-            }
+            RouteMother.Random(companyId),
+            RouteMother.Random(companyId)
         };
 
         foreach (var route in routes) await Repository.Save(route);
