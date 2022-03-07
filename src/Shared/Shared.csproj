@@ -22,7 +22,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.3"/>
     <PackageReference Include="RabbitMQ.Client" Version="6.2.4"/>
-    <PackageReference Include="ValueOf" Version="2.0.27"/>
+    <PackageReference Include="ValueOf" Version="2.0.31"/>
   </ItemGroup>
 
 </Project>
