@@ -6,4 +6,23 @@ if ! [ -x "$(command -v kubectl)" ]; then
     exit 1
 fi
 
-kubectl apply -f k8s/
+option=$1
+
+case $option in
+"database")
+    echo "Deploying database..."
+    kubectl apply -f k8s/db/
+    ;;
+"logging")
+    echo "Deploying logging..."
+    kubectl apply -f k8s/elk/
+    ;;
+"services")
+    echo "Deploying services..."
+    kubectl apply -f k8s/
+    ;;
+*)
+    echo "Usage: ./deploy.sh [database|logging|services]"
+    exit 1
+    ;;
+esac

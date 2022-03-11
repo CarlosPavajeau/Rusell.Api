@@ -44,7 +44,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees.Api", "apps\Emplo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{A177CB9E-FAB8-495D-AF00-AC9EC1DC4EC1}"
 	ProjectSection(SolutionItems) = preProject
-		k8s\local-pvc.yml = k8s\local-pvc.yml
 		k8s\addresses-deploy.yml = k8s\addresses-deploy.yml
 		k8s\ingress-service.yml = k8s\ingress-service.yml
 		k8s\rabbitmq-deploy.yml = k8s\rabbitmq-deploy.yml
@@ -90,6 +89,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db", "db", "{C01DD24D-28DF-4305-92DB-9C21BD1F8A1F}"
 	ProjectSection(SolutionItems) = preProject
 		k8s\db\posgres-deploy.yml = k8s\db\posgres-deploy.yml
+		k8s\db\local-pvc.yml = k8s\db\local-pvc.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Clients.Api", "test\apps\Test.Clients.Api\Test.Clients.Api.csproj", "{2248FEC6-0B6F-4C42-988C-241BBF7810A9}"
