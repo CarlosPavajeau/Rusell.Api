@@ -1,4 +1,4 @@
 namespace Rusell.Routes.Application;
 
-public record RouteResponse(string From, string To, decimal Cost, bool IsCustomerPickedUpAtHome,
+public record RouteResponse(string Id, string From, string To, decimal Cost, bool IsCustomerPickedUpAtHome,
     bool IsCustomerDroppedOffAtHome);
