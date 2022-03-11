@@ -1,6 +1,7 @@
 using Rusell.Shared;
 using Rusell.Shared.Helpers;
 using Rusell.TransportSheets.Application.Create;
+using Rusell.TransportSheets.Application.FindCurrent;
 using Rusell.TransportSheets.Application.SearchAllByCompany;
 using Rusell.TransportSheets.Employees.Application.Create;
 
@@ -12,6 +13,7 @@ public static class Application
     {
         services.AddScoped<TransportSheetCreator, TransportSheetCreator>();
         services.AddScoped<TransportSheetsByCompanySearcher, TransportSheetsByCompanySearcher>();
+        services.AddScoped<CurrentTransportSheetFinder, CurrentTransportSheetFinder>();
 
         services.AddScoped<EmployeeCreator, EmployeeCreator>();
 
