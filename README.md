@@ -12,13 +12,34 @@
 Make sure you have installed and configured docker and kubernetes. After that, you can run the following command to
 start the API:
 
+### Start database service
+
+```bash
+./deploy.sh database
+```
+
+`Optional`: If you want to start the logging service, run the following command:
+
+```bash
+./deploy.sh logging
+```
+
+### Start all services
+
 ```shell
-./deploy.sh
+./deploy.sh services
 ```
 
 This will create a new kubernetes deployment and service for the API.
 
+`Optional`: If you want run a specific service, run the following command in k8s folder:
+
+```shell
+kubectl apply -f <service>.yml
+```
+
 ## Features
+
 - `Addresses.Api` - Addresses API
 - `BankDrafts.Api` - Bank Drafts API
 - `Client.Api` - Clients API
