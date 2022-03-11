@@ -31,4 +31,11 @@ public class EntityFrameworkTransportSheetsRepository : Repository<TransportShee
             .Where(predicate)
             .ToListAsync();
     }
+
+    public async Task<TransportSheet?> FindCurrent(CompanyId companyId)
+    {
+        return await Context.Set<TransportSheet>()
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.CompanyId == companyId && x.DepartureTime == null);
+    }
 }

@@ -11,11 +11,12 @@ public class TransportSheetToTransportSheetResponse : IRegister
         config.NewConfig<TransportSheet, TransportSheetResponse>()
             .MapWith(v =>
                 new TransportSheetResponse(
+                    v.Id.ToString(),
                     v.Date,
                     v.DepartureTime,
                     v.Quota,
                     v.VehicleLicensePlate,
-                    v.RouteId,
+                    v.RouteId.ToString(),
                     v.Dispatcher.FullName));
     }
 }
