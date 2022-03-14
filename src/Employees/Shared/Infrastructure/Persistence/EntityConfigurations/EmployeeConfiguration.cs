@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Rusell.Employees.Domain;
+using Rusell.Shared.Domain.ValueObject;
 using Rusell.Shared.Extensions;
 
 namespace Rusell.Employees.Shared.Infrastructure.Persistence.EntityConfigurations;
@@ -54,5 +55,10 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
             .HasConversion(v => v.Value, v => CompanyId.From(v));
 
         builder.HasIndex(x => x.CompanyId);
+
+        builder.Property(x => x.UserId)
+            .HasConversion(v => v.Value, v => UserId.From(v));
+
+        builder.HasIndex(x => x.UserId).IsUnique();
     }
 }

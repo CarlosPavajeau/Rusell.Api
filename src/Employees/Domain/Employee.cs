@@ -7,7 +7,8 @@ namespace Rusell.Employees.Domain;
 public class Employee : AggregateRoot
 {
     public Employee(EmployeeId id, FirstName firstName, MiddleName middleName, FirstSurname firstSurname,
-        SecondSurname secondSurname, Email? email, PhoneNumber phoneNumber, EmployeeType type, CompanyId companyId)
+        SecondSurname secondSurname, Email? email, PhoneNumber phoneNumber, EmployeeType type, CompanyId companyId,
+        UserId userId)
     {
         Id = id;
         FirstName = firstName;
@@ -18,6 +19,7 @@ public class Employee : AggregateRoot
         PhoneNumber = phoneNumber;
         Type = type;
         CompanyId = companyId;
+        UserId = userId;
     }
 
     private Employee()
@@ -39,11 +41,14 @@ public class Employee : AggregateRoot
 
     public CompanyId CompanyId { get; set; }
 
+    public UserId UserId { get; set; }
+
     public static Employee Create(EmployeeId id, FirstName firstName, MiddleName middleName, FirstSurname firstSurname,
-        SecondSurname secondSurname, Email? email, PhoneNumber phoneNumber, EmployeeType type, CompanyId companyId)
+        SecondSurname secondSurname, Email? email, PhoneNumber phoneNumber, EmployeeType type, CompanyId companyId,
+        UserId userId)
     {
         var employee = new Employee(id, firstName, middleName, firstSurname, secondSurname, email, phoneNumber, type,
-            companyId);
+            companyId, userId);
 
         employee.Record(new EmployeeCreatedDomainEvent(id, $"{firstName} {middleName} {firstSurname} {secondSurname}"));
 

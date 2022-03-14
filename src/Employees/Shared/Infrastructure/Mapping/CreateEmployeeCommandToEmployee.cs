@@ -19,6 +19,7 @@ public class CreateEmployeeCommandToEmployee : IRegister
                     s.Email,
                     s.PhoneNumber,
                     s.Type,
-                    s.CompanyId));
+                    s.CompanyId,
+                    s.UserId));
     }
 }

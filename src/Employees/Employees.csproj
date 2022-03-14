@@ -9,7 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Shared.csproj"/>
+    <ProjectReference Include="..\Shared\Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Auth0.ManagementApi" Version="7.15.0" />
   </ItemGroup>
 
 </Project>
