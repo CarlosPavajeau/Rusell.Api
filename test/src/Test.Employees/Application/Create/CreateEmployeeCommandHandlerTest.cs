@@ -33,6 +33,7 @@ public class CreateEmployeeCommandHandlerTest : EmployeesUnitTestCase
             WordMother.Random(),
             WordMother.Random(),
             EmployeeType.Driver,
+            Guid.NewGuid().ToString(),
             Guid.NewGuid());
 
         await _handler.Handle(command, CancellationToken.None);

@@ -31,7 +31,8 @@ public class SearchAllEmployeesByCompanyQueryHandlerTest : EmployeesUnitTestCase
                 WordMother.Random(),
                 WordMother.Random(),
                 EmployeeType.Driver,
-                _companyId)
+                _companyId,
+                Guid.NewGuid().ToString())
         });
     }
 

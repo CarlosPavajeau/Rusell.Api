@@ -27,7 +27,8 @@ public class EmployeesPostControllerTest : EmployeesContextApplicationTestCase
             WordMother.Random(),
             WordMother.Random(),
             WordMother.Random(),
-            EmployeeType.Driver);
+            EmployeeType.Driver,
+            Guid.NewGuid().ToString());
         var companyId = Guid.NewGuid();
 
         var response =
