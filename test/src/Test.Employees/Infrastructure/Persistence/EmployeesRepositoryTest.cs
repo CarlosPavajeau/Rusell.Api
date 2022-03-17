@@ -75,4 +75,24 @@ public class EmployeesRepositoryTest : EmployeesContextInfrastructureTestCase
 
         foundEmployee.Should().BeNull();
     }
+
+    [Fact]
+    public async Task FindByUser_Should_Return_An_Employee()
+    {
+        var employee = EmployeeMother.Random(Guid.NewGuid());
+
+        await Repository.Save(employee);
+
+        var foundEmployee = await Repository.FindByUser(employee.UserId);
+
+        foundEmployee.Should().NotBeNull();
+    }
+
+    [Fact]
+    public async Task FindByUser_Should_Return_Null()
+    {
+        var foundEmployee = await Repository.FindByUser(WordMother.Random());
+
+        foundEmployee.Should().BeNull();
+    }
 }
