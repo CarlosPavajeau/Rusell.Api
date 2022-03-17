@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Rusell.Employees.Domain;
+using Rusell.Shared.Domain.ValueObject;
 using Rusell.Shared.Infrastructure.Repository;
 
 namespace Rusell.Employees.Infrastructure.Persistence;
@@ -31,5 +32,12 @@ public class EntityFrameworkEmployeesRepository : Repository<Employee, EmployeeI
             .AsNoTracking()
             .Where(e => e.CompanyId == companyId && e.Type == type)
             .ToListAsync();
+    }
+
+    public async Task<Employee?> FindByUser(UserId userId)
+    {
+        return await Context.Set<Employee>()
+            .AsNoTracking()
+            .FirstOrDefaultAsync(e => e.UserId == userId);
     }
 }

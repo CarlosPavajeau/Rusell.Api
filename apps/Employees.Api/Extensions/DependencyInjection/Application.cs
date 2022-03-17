@@ -1,4 +1,5 @@
 using Rusell.Employees.Application.Create;
+using Rusell.Employees.Application.FindByUser;
 using Rusell.Employees.Application.SearchAll;
 using Rusell.Employees.Application.SearchAllByCompany;
 using Rusell.Employees.Application.SearchAllByType;
@@ -15,6 +16,7 @@ public static class Application
         services.AddScoped<EmployeesByCompanySearcher, EmployeesByCompanySearcher>();
         services.AddScoped<CompanyEmployeesByTypeSearcher, CompanyEmployeesByTypeSearcher>();
         services.AddScoped<EmployeesSearcher, EmployeesSearcher>();
+        services.AddScoped<EmployeeByUserFinder, EmployeeByUserFinder>();
 
         services.AddDomainEventSubscriberInformationService(AssemblyHelper.GetInstance(Assemblies.Employees));
 
