@@ -14,6 +14,7 @@ public class EmployeeToEmployeeResponse : IRegister
                 $"{s.FirstName} {s.MiddleName} {s.FirstSurname} {s.SecondSurname}",
                 s.Email,
                 s.PhoneNumber,
-                s.Type));
+                s.Type,
+                s.CompanyId.Value));
     }
 }
