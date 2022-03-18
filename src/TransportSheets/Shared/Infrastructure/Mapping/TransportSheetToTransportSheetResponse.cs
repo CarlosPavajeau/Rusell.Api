@@ -13,7 +13,7 @@ public class TransportSheetToTransportSheetResponse : IRegister
                 new TransportSheetResponse(
                     v.Id.ToString(),
                     v.Date,
-                    v.DepartureTime,
+                    v.DepartureTime == null ? null : v.DepartureTime.Value,
                     v.Quota,
                     v.VehicleLicensePlate,
                     v.RouteId.ToString(),
