@@ -36,6 +36,7 @@ public class EntityFrameworkTransportSheetsRepository : Repository<TransportShee
     {
         return await Context.Set<TransportSheet>()
             .AsNoTracking()
-            .FirstOrDefaultAsync(x => x.CompanyId.Value == companyId.Value && x.DepartureTime.Value == null);
+            .Include(x => x.Dispatcher)
+            .FirstOrDefaultAsync(x => x.CompanyId.Value == companyId.Value && x.DepartureTime == null);
     }
 }
