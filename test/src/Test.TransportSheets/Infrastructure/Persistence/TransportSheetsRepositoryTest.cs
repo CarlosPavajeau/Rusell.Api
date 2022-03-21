@@ -43,4 +43,16 @@ public class TransportSheetsRepositoryTest : TransportSheetsContextInfrastructur
 
         currentTransportSheet.Should().NotBeNull();
     }
+
+    [Fact]
+    public async Task Find_Should_Return_A_TransportSheet()
+    {
+        var transportSheet = TransportSheetMother.Random(Guid.NewGuid());
+        await Repository.Save(transportSheet);
+
+        var found = await Repository.Find(transportSheet.Id);
+
+        found.Should().NotBeNull();
+        found?.Id.Should().Be(transportSheet.Id);
+    }
 }

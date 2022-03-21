@@ -13,6 +13,6 @@ public class TransportSheetsByCompanySearcher
 
     public async Task<IEnumerable<TransportSheet>> SearchAllByCompany(CompanyId companyId)
     {
-        return await _repository.SearchAll(x => x.CompanyId == companyId);
+        return await _repository.SearchAll(x => x.CompanyId.Value == companyId.Value);
     }
 }
