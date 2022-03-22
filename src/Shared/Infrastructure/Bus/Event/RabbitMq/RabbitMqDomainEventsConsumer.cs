@@ -13,9 +13,9 @@ public class RabbitMqDomainEventsConsumer : IDomainEventsConsumer
     private const string HeaderRedelivery = "redelivery_count";
     private readonly RabbitMqConfig _config;
     private readonly IDomainEventDeserializer _deserializer;
-    private readonly IServiceProvider _serviceProvider;
 
     private readonly DomainEventSubscribersInformation _information;
+    private readonly IServiceProvider _serviceProvider;
 
     public RabbitMqDomainEventsConsumer(RabbitMqConfig config, IServiceProvider serviceProvider,
         DomainEventSubscribersInformation information, IDomainEventDeserializer deserializer)
@@ -77,9 +77,13 @@ public class RabbitMqDomainEventsConsumer : IDomainEventsConsumer
     private void HandleConsumptionError(BasicDeliverEventArgs ea, DomainEvent @event, string queue)
     {
         if (HasBeenRedeliveredTooMuch(ea.BasicProperties.Headers))
+        {
             SendToDeadLetter(ea, queue);
+        }
         else
+        {
             SendToRetry(ea, queue);
+        }
     }
 
     private static bool HasBeenRedeliveredTooMuch(IDictionary<string, object> headers) =>

@@ -6,8 +6,8 @@ namespace Rusell.Clients.Application.Create;
 
 public class ClientCreator
 {
-    private readonly IClientsRepository _repository;
     private readonly IEventBus _eventBus;
+    private readonly IClientsRepository _repository;
 
     public ClientCreator(IClientsRepository repository, IEventBus eventBus)
     {

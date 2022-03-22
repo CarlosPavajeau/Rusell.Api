@@ -11,9 +11,9 @@ namespace Rusell.Test.Addresses.Application.Find;
 
 public class FindAddressQueryHandlerTest : AddressesUnitTestCase
 {
-    private readonly FindAddressQueryHandler _handler;
     private readonly Guid _addressIdFound = Guid.NewGuid();
     private readonly Guid _addressIdNotFound = Guid.NewGuid();
+    private readonly FindAddressQueryHandler _handler;
 
     public FindAddressQueryHandlerTest()
     {

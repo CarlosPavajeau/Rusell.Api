@@ -24,11 +24,17 @@ public class GetCurrentController : ControllerBase
     {
         var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
-        if (userId is null) return Unauthorized();
+        if (userId is null)
+        {
+            return Unauthorized();
+        }
 
         var employee = await _mediator.Send(new FindEmployeeByUserQuery(userId));
 
-        if (employee is null) return NotFound();
+        if (employee is null)
+        {
+            return NotFound();
+        }
 
         return Ok(employee);
     }

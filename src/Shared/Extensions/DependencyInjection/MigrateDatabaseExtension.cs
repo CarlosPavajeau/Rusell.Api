@@ -15,7 +15,10 @@ public static class MigrateDatabaseExtension
         try
         {
             var context = services.GetRequiredService<TDbContext>();
-            if (context.Database.GetPendingMigrations().Any()) context.Database.Migrate();
+            if (context.Database.GetPendingMigrations().Any())
+            {
+                context.Database.Migrate();
+            }
         }
         catch (Exception e)
         {

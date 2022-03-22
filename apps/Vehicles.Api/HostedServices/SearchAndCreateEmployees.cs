@@ -27,7 +27,10 @@ public class SearchAndCreateEmployees : BackgroundService
             try
             {
                 var employeeExists = await mediator.Send(new CheckEmployeeExistsQuery(id), stoppingToken);
-                if (!employeeExists) await mediator.Send(new CreateEmployeeCommand(id, fullName), stoppingToken);
+                if (!employeeExists)
+                {
+                    await mediator.Send(new CreateEmployeeCommand(id, fullName), stoppingToken);
+                }
             }
             catch (Exception e)
             {

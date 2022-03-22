@@ -4,8 +4,6 @@ namespace Rusell.Shared.Domain.Employees.Domain;
 
 public class EmployeeCreatedDomainEvent : DomainEvent
 {
-    public string FullName { get; }
-
     public EmployeeCreatedDomainEvent(string id, string fullName, string? eventId = null, string? occurredOn = null) :
         base(id, eventId, occurredOn)
     {
@@ -15,6 +13,8 @@ public class EmployeeCreatedDomainEvent : DomainEvent
     public EmployeeCreatedDomainEvent()
     {
     }
+
+    public string FullName { get; }
 
     public override string EventName() => "employee.created";
 

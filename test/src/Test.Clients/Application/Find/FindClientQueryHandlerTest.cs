@@ -12,9 +12,9 @@ namespace Rusell.Test.Clients.Application.Find;
 
 public class FindClientQueryHandlerTest : ClientsUnitTestCase
 {
-    private readonly FindClientQueryHandler _handler;
     private readonly string _clientIdFound = Guid.NewGuid().ToString();
     private readonly string _clientIdNotFound = Guid.NewGuid().ToString();
+    private readonly FindClientQueryHandler _handler;
 
     public FindClientQueryHandlerTest()
     {

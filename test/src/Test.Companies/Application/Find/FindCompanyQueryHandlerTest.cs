@@ -12,9 +12,9 @@ namespace Rusell.Test.Companies.Application.Find;
 
 public class FindCompanyQueryHandlerTest : CompaniesUnitTestCase
 {
-    private readonly FindCompanyQueryHandler _handler;
     private readonly Guid _companyIdFound = Guid.NewGuid();
     private readonly Guid _companyIdNotFound = Guid.NewGuid();
+    private readonly FindCompanyQueryHandler _handler;
 
 
     public FindCompanyQueryHandlerTest()

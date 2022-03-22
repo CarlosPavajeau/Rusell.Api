@@ -26,7 +26,10 @@ public class TicketContextInfrastructureTestCase : InfrastructureTestCase<Progra
         {
             var descriptor =
                 services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<TicketsDbContext>));
-            if (descriptor is not null) services.Remove(descriptor);
+            if (descriptor is not null)
+            {
+                services.Remove(descriptor);
+            }
 
             services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Vehicles));
 

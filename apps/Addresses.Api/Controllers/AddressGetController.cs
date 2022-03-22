@@ -22,7 +22,10 @@ public class AddressGetController : ControllerBase
     public async Task<ActionResult<AddressResponse>> GetAddress(Guid id)
     {
         var address = await _mediator.Send(new FindAddressQuery(id.ToString()));
-        if (address is null) return NotFound();
+        if (address is null)
+        {
+            return NotFound();
+        }
 
         return Ok(address);
     }

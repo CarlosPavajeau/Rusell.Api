@@ -6,8 +6,8 @@ namespace Rusell.Employees.Application.Create;
 
 public class EmployeeCreator
 {
-    private readonly IEmployeesRepository _repository;
     private readonly IEventBus _eventBus;
+    private readonly IEmployeesRepository _repository;
 
     public EmployeeCreator(IEmployeesRepository repository, IEventBus eventBus)
     {

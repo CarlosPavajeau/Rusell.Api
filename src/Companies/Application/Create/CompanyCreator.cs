@@ -6,8 +6,8 @@ namespace Rusell.Companies.Application.Create;
 
 public class CompanyCreator
 {
-    private readonly ICompaniesRepository _repository;
     private readonly IEventBus _eventBus;
+    private readonly ICompaniesRepository _repository;
 
     public CompanyCreator(ICompaniesRepository repository, IEventBus eventBus)
     {

@@ -24,7 +24,9 @@ public class AddressesGetController : ControllerBase
     {
         var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
         if (userId is null)
+        {
             return Unauthorized();
+        }
 
         var addresses = await _mediator.Send(new SearchAllAddressesByUserQuery(userId));
         return Ok(addresses);

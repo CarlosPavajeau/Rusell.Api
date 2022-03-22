@@ -20,7 +20,10 @@ public class CreateVehicleLegalInformationCommandHandler : CommandHandler<Create
         CancellationToken cancellationToken)
     {
         var vehicleExists = await _checker.CheckExists(request.LicensePlate);
-        if (!vehicleExists) throw new VehicleNotFound();
+        if (!vehicleExists)
+        {
+            throw new VehicleNotFound();
+        }
 
         await _legalInformationCreator.CreateLegalInformation(request.LicensePlate, request.Type, request.DueDate,
             request.RenovationDate);

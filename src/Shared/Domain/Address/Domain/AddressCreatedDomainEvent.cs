@@ -4,11 +4,6 @@ namespace Rusell.Shared.Domain.Address.Domain;
 
 public class AddressCreatedDomainEvent : DomainEvent
 {
-    public string Country { get; }
-    public string State { get; }
-    public string City { get; }
-
-
     public AddressCreatedDomainEvent(string id, string country, string state, string city, string? eventId = null,
         string? occurredOn = null) : base(id, eventId, occurredOn)
     {
@@ -20,6 +15,10 @@ public class AddressCreatedDomainEvent : DomainEvent
     public AddressCreatedDomainEvent()
     {
     }
+
+    public string Country { get; }
+    public string State { get; }
+    public string City { get; }
 
     public override string EventName() => "address.created";
 

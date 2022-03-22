@@ -26,8 +26,10 @@ public class CompaniesRepositoryTest : CompaniesContextInfrastructureTestCase
     {
         var companies = new List<Company>();
         for (var i = 0; i < 10; i++)
+        {
             companies.Add(Company.Create(WordMother.Random(), WordMother.Random(), WordMother.Random(),
                 WordMother.Random()));
+        }
 
         foreach (var company in companies) await Repository.Save(company);
 

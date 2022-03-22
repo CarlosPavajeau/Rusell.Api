@@ -7,8 +7,8 @@ namespace Rusell.Shared.Infrastructure.Bus.Event.RabbitMq;
 public class RabbitMqEventBus : IEventBus
 {
     private readonly string _exchangeName;
-    private readonly RabbitMqPublisher _publisher;
     private readonly ILogger<RabbitMqEventBus> _logger;
+    private readonly RabbitMqPublisher _publisher;
 
     public RabbitMqEventBus(RabbitMqPublisher publisher, ILogger<RabbitMqEventBus> logger,
         string exchangeName = "domain_events")

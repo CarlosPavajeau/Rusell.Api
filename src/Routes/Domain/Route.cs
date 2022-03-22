@@ -36,7 +36,7 @@ public class Route
     public static Route Create(AddressId fromId, AddressId toId, Cost cost,
         IsCustomerPickedUpAtHome isCustomerPickedUpAtHome,
         IsCustomerDroppedOffAtHome isCustomerDroppedOffAtHome, CompanyId companyId) =>
-        new Route
+        new()
         {
             FromId = fromId,
             ToId = toId,

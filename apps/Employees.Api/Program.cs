@@ -22,7 +22,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-if (app.Environment.IsProduction()) app.MigrateDatabase<EmployeesDbContext>();
+if (app.Environment.IsProduction())
+{
+    app.MigrateDatabase<EmployeesDbContext>();
+}
 
 if (app.Environment.IsDevelopment())
 {

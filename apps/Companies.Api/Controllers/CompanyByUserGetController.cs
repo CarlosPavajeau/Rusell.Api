@@ -23,10 +23,15 @@ public class CompanyByUserGetController : ControllerBase
     {
         var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
         if (userId is null)
+        {
             return Unauthorized();
+        }
 
         var company = await _mediator.Send(new FindCompanyByUserQuery(userId));
-        if (company is null) return NotFound();
+        if (company is null)
+        {
+            return NotFound();
+        }
 
         return Ok(company);
     }

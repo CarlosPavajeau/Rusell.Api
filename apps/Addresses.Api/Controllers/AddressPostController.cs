@@ -30,7 +30,9 @@ public class AddressPostController : ControllerBase
         {
             var commandUserId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             if (commandUserId is null)
+            {
                 return Unauthorized();
+            }
 
             var command = request.Adapt<CreateAddressCommand>();
             command.UserId = commandUserId;

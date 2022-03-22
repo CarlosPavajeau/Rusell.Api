@@ -30,7 +30,10 @@ public class BankDraftsContextInfrastructureTestCase : InfrastructureTestCase<Pr
         {
             var descriptor =
                 services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<BankDraftsDbContext>));
-            if (descriptor is not null) services.Remove(descriptor);
+            if (descriptor is not null)
+            {
+                services.Remove(descriptor);
+            }
 
             services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.BankDrafts));
 

@@ -22,7 +22,10 @@ public class CompanyGetController : ControllerBase
     public async Task<ActionResult<CompanyResponse>> GetCompany(string id)
     {
         var company = await _mediator.Send(new FindCompanyQuery(id));
-        if (company is null) return NotFound();
+        if (company is null)
+        {
+            return NotFound();
+        }
 
         return Ok(company);
     }

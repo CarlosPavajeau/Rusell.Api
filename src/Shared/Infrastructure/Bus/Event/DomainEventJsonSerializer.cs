@@ -7,7 +7,10 @@ public static class DomainEventJsonSerializer
 {
     public static string Serialize(DomainEvent? domainEvent)
     {
-        if (domainEvent == null) return "";
+        if (domainEvent == null)
+        {
+            return "";
+        }
 
         var attributes = domainEvent.ToPrimitives();
 

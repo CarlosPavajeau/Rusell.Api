@@ -24,7 +24,9 @@ public class ClientGetController : ControllerBase
         {
             var client = await _mediator.Send(new FindClientQuery(clientId));
             if (client is null)
+            {
                 return NotFound();
+            }
 
             return Ok(client);
         }

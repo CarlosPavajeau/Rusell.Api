@@ -24,7 +24,10 @@ public class AddressesContextInfrastructureTestCase : InfrastructureTestCase<Pro
         {
             var descriptor =
                 services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<AddressesDbContext>));
-            if (descriptor is not null) services.Remove(descriptor);
+            if (descriptor is not null)
+            {
+                services.Remove(descriptor);
+            }
 
             services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Addresses));
 

@@ -14,8 +14,8 @@ namespace Rusell.Vehicles.Api.Controllers;
 [Route("api/vehicles/{licencePlate}/legal-information")]
 public class VehicleLegalInformationPostController : ControllerBase
 {
-    private readonly IMediator _mediator;
     private readonly ILogger<VehicleLegalInformationPostController> _logger;
+    private readonly IMediator _mediator;
 
     public VehicleLegalInformationPostController(IMediator mediator,
         ILogger<VehicleLegalInformationPostController> logger)

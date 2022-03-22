@@ -24,7 +24,10 @@ public class ClientsPostController : ControllerBase
         try
         {
             var clientUserId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            if (clientUserId is null) return Unauthorized();
+            if (clientUserId is null)
+            {
+                return Unauthorized();
+            }
 
             var command = request.Adapt<CreateClientCommand>();
             command.UserId = clientUserId;

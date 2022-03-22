@@ -26,7 +26,10 @@ public class TransportSheetsContextInfrastructureTestCase : InfrastructureTestCa
         {
             var descriptor =
                 services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<TransportSheetsDbContext>));
-            if (descriptor is not null) services.Remove(descriptor);
+            if (descriptor is not null)
+            {
+                services.Remove(descriptor);
+            }
 
             services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.TransportSheets));
 

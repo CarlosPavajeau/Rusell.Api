@@ -39,7 +39,10 @@ public static class DomainEventSubscriberInformationService
 
         var eventType = handlerInterfaceType.GenericTypeArguments.FirstOrDefault();
 
-        if (eventType == null) return;
+        if (eventType == null)
+        {
+            return;
+        }
 
         foreach (var handlerClassType in handlerClassTypes)
             information.Add(handlerClassType,

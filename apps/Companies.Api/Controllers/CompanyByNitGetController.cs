@@ -22,7 +22,10 @@ public class CompanyByNitGetController : ControllerBase
     public async Task<ActionResult<CompanyResponse>> GetCompanyByNit(string nit)
     {
         var company = await _mediator.Send(new FindCompanyByNitQuery(nit));
-        if (company is null) return NotFound();
+        if (company is null)
+        {
+            return NotFound();
+        }
 
         return Ok(company);
     }

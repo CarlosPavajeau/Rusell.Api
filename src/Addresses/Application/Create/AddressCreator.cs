@@ -7,8 +7,8 @@ namespace Rusell.Addresses.Application.Create;
 
 public class AddressCreator
 {
-    private readonly IAddressesRepository _repository;
     private readonly IEventBus _eventBus;
+    private readonly IAddressesRepository _repository;
 
     public AddressCreator(IAddressesRepository repository, IEventBus eventBus)
     {

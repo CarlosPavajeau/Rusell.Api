@@ -5,7 +5,6 @@ namespace Rusell.Shared.Infrastructure.Bus.Event.RabbitMq;
 
 public class RabbitMqConfig
 {
-    private ConnectionFactory ConnectionFactory { get; }
     private static IConnection? _connection;
     private static IModel? _channel;
 
@@ -21,6 +20,8 @@ public class RabbitMqConfig
             Port = configParams.Port
         };
     }
+
+    private ConnectionFactory ConnectionFactory { get; }
 
     public IConnection Connection() => _connection ??= ConnectionFactory.CreateConnection();
 

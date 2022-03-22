@@ -28,5 +28,5 @@ public class VehicleLegalInformation
 
     public static VehicleLegalInformation Create(LegalInformationType type, DueDate dueDate,
         RenovationDate renovationDate, LicensePlate vehicleLicensePlate) =>
-        new VehicleLegalInformation(type, dueDate, renovationDate, vehicleLicensePlate);
+        new(type, dueDate, renovationDate, vehicleLicensePlate);
 }

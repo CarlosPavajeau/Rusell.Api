@@ -13,8 +13,8 @@ namespace Rusell.Test.Employees.Application.SearchAllByType;
 
 public class SearchAllCompanyEmployeesByTypeQueryHandlerTest : EmployeesUnitTestCase
 {
-    private readonly SearchAllCompanyEmployeesByTypeQueryHandler _handler;
     private readonly Guid _companyId = Guid.NewGuid();
+    private readonly SearchAllCompanyEmployeesByTypeQueryHandler _handler;
 
     public SearchAllCompanyEmployeesByTypeQueryHandlerTest()
     {
