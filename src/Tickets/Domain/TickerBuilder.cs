@@ -1,6 +1,8 @@
+using BuilderGenerator;
+
 namespace Rusell.Tickets.Domain;
 
 [BuilderFor(typeof(Ticket))]
-public class TickerBuilder
+public partial class TickerBuilder
 {
 }

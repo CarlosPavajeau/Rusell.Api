@@ -1,6 +1,8 @@
+using BuilderGenerator;
+
 namespace Rusell.Vehicles.Domain;
 
 [BuilderFor(typeof(Vehicle))]
-public class VehicleBuilder
+public partial class VehicleBuilder
 {
 }

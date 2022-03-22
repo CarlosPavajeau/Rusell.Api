@@ -1,6 +1,8 @@
+using BuilderGenerator;
+
 namespace Rusell.Parcels.Domain;
 
 [BuilderFor(typeof(Parcel))]
-public class ParcelBuilder
+public partial class ParcelBuilder
 {
 }

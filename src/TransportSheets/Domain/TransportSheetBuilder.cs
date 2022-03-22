@@ -1,6 +1,8 @@
+using BuilderGenerator;
+
 namespace Rusell.TransportSheets.Domain;
 
 [BuilderFor(typeof(TransportSheet))]
-public class TransportSheetBuilder
+public partial class TransportSheetBuilder
 {
 }

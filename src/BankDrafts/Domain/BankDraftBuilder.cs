@@ -1,6 +1,8 @@
+using BuilderGenerator;
+
 namespace Rusell.BankDrafts.Domain;
 
 [BuilderFor(typeof(BankDraft))]
-public class BankDraftBuilder
+public partial class BankDraftBuilder
 {
 }
