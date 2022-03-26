@@ -32,4 +32,16 @@ public static class ParcelMother
             .WithCompany(company)
             .Build();
     }
+
+    internal static Parcel WithSenderId(this Parcel parcel, string senderId)
+    {
+        parcel.SenderId = ClientId.From(senderId);
+        return parcel;
+    }
+
+    internal static Parcel WithReceiverId(this Parcel parcel, string receiverId)
+    {
+        parcel.ReceiverId = ClientId.From(receiverId);
+        return parcel;
+    }
 }

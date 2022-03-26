@@ -1,11 +1,10 @@
 using Mapster;
-using Rusell.Parcels.Application.SearchAllByReceiver;
 using Rusell.Shared.Domain.Bus.Query;
 
 namespace Rusell.Parcels.Application.SearchAllBySender;
 
 public class
-    SearchAllParcelsBySenderQueryHandler : IQueryHandler<SearchAllParcelsByReceiverQuery, IEnumerable<ParcelResponse>>
+    SearchAllParcelsBySenderQueryHandler : IQueryHandler<SearchAllParcelsBySenderQuery, IEnumerable<ParcelResponse>>
 {
     private readonly ParcelsBySenderSearcher _searcher;
 
@@ -14,10 +13,10 @@ public class
         _searcher = searcher;
     }
 
-    public async Task<IEnumerable<ParcelResponse>> Handle(SearchAllParcelsByReceiverQuery request,
+    public async Task<IEnumerable<ParcelResponse>> Handle(SearchAllParcelsBySenderQuery request,
         CancellationToken cancellationToken)
     {
-        var parcels = await _searcher.SearchAllBySender(request.ReceiverId);
+        var parcels = await _searcher.SearchAllBySender(request.SenderId);
         return parcels.Adapt<IEnumerable<ParcelResponse>>();
     }
 }
