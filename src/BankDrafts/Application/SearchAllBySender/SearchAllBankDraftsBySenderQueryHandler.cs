@@ -1,4 +1,5 @@
 using Mapster;
+using Rusell.BankDrafts.Clients.Domain;
 using Rusell.Shared.Domain.Bus.Query;
 
 namespace Rusell.BankDrafts.Application.SearchAllBySender;
@@ -17,7 +18,7 @@ public class
     public async Task<IEnumerable<BankDraftResponse>> Handle(SearchAllBankDraftsBySenderQuery request,
         CancellationToken cancellationToken)
     {
-        var bankDrafts = await _searcher.SearchAllBySender(request.SenderId);
+        var bankDrafts = await _searcher.SearchAllBySender(ClientId.From(request.SenderId));
         return bankDrafts.Adapt<IEnumerable<BankDraftResponse>>();
     }
 }
