@@ -8,11 +8,11 @@ namespace Rusell.BankDrafts.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/bank-drafts/by-sender/{senderId}")]
-public class BankDraftsBySenderGetController : ControllerBase
+public class BySenderGetController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public BankDraftsBySenderGetController(IMediator mediator)
+    public BySenderGetController(IMediator mediator)
     {
         _mediator = mediator;
     }

@@ -8,12 +8,12 @@ namespace Rusell.BankDrafts.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/bank-drafts/companies/{companyId:guid}/bank-drafts")]
-public class BankDraftsPostController : ControllerBase
+public class PostController : ControllerBase
 {
-    private readonly ILogger<BankDraftsPostController> _logger;
+    private readonly ILogger<PostController> _logger;
     private readonly IMediator _mediator;
 
-    public BankDraftsPostController(ILogger<BankDraftsPostController> logger, IMediator mediator)
+    public PostController(ILogger<PostController> logger, IMediator mediator)
     {
         _logger = logger;
         _mediator = mediator;
