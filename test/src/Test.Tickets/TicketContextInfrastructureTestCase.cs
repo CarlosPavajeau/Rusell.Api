@@ -31,7 +31,7 @@ public class TicketContextInfrastructureTestCase : InfrastructureTestCase<Progra
                 services.Remove(descriptor);
             }
 
-            services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Vehicles));
+            services.AddMediatR(AssemblyHelper.GetInstance(Assemblies.Tickets));
 
             var serviceProvider = services.AddEntityFrameworkInMemoryDatabase().BuildServiceProvider();
             services.AddDbContext<TicketsDbContext>(options =>
