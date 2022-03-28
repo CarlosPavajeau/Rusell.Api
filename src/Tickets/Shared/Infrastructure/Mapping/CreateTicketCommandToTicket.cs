@@ -9,7 +9,7 @@ public class CreateTicketCommandToTicket : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<CreateTicketCommand, Ticket>()
-            .MapWith(v => new TickerBuilder()
+            .MapWith(v => new TicketBuilder()
                 .WithId(Guid.NewGuid())
                 .WithDate(DateTime.UtcNow)
                 .WithState(TicketState.Pending)
