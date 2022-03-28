@@ -9,11 +9,11 @@ namespace Rusell.Employees.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/employees/companies/{companyId:guid}/employees")]
-public class CompanyEmployeesGetController : ControllerBase
+public class GetAllByCompanyController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public CompanyEmployeesGetController(IMediator mediator)
+    public GetAllByCompanyController(IMediator mediator)
     {
         _mediator = mediator;
     }

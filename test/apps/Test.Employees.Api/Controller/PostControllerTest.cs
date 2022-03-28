@@ -9,9 +9,9 @@ using Xunit;
 
 namespace Rusell.Test.Employees.Api.Controller;
 
-public class EmployeesPostControllerTest : EmployeesContextApplicationTestCase
+public class PostControllerTest : EmployeesContextApplicationTestCase
 {
-    public EmployeesPostControllerTest(EmployeesWebApplicationFactory<Program> factory) : base(factory)
+    public PostControllerTest(EmployeesWebApplicationFactory<Program> factory) : base(factory)
     {
         CreateAuthenticatedClient();
     }
