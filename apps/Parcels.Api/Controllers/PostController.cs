@@ -11,12 +11,12 @@ namespace Rusell.Parcels.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/parcels/companies/{companyId:guid}/parcels")]
-public class ParcelsPostController : ControllerBase
+public class PostController : ControllerBase
 {
-    private readonly ILogger<ParcelsPostController> _logger;
+    private readonly ILogger<PostController> _logger;
     private readonly IMediator _mediator;
 
-    public ParcelsPostController(ILogger<ParcelsPostController> logger, IMediator mediator)
+    public PostController(ILogger<PostController> logger, IMediator mediator)
     {
         _logger = logger;
         _mediator = mediator;

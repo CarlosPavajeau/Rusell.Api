@@ -32,4 +32,8 @@
     <ProjectReference Include="..\..\src\Test.Parcels\Test.Parcels.csproj"/>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers"/>
+  </ItemGroup>
+
 </Project>

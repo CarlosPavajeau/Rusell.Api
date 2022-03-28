@@ -11,11 +11,11 @@ namespace Rusell.Parcels.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/parcels/by-receiver/{receiverId}")]
-public class ParcelsByReceiverGetController : ControllerBase
+public class ByReceiverGetController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public ParcelsByReceiverGetController(IMediator mediator)
+    public ByReceiverGetController(IMediator mediator)
     {
         _mediator = mediator;
     }
