@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\apps\BankDrafts.Api\BankDrafts.Api.csproj"/>
+    <ProjectReference Include="..\..\..\src\BankDrafts\BankDrafts.csproj"/>
     <ProjectReference Include="..\Test.Shared\Test.Shared.csproj"/>
   </ItemGroup>
 

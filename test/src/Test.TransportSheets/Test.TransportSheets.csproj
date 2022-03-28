@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\apps\TransportSheets.Api\TransportSheets.Api.csproj"/>
+    <ProjectReference Include="..\..\..\src\TransportSheets\TransportSheets.csproj"/>
     <ProjectReference Include="..\Test.Shared\Test.Shared.csproj"/>
   </ItemGroup>
 

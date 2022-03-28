@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\apps\Parcels.Api\Parcels.Api.csproj"/>
+    <ProjectReference Include="..\..\..\src\Parcels\Parcels.csproj"/>
     <ProjectReference Include="..\Test.Shared\Test.Shared.csproj"/>
   </ItemGroup>
 
