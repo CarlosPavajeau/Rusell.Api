@@ -51,7 +51,7 @@ public class GetAllByCompanyAndTypeControllerTest : EmployeesContextApplicationT
                 WordMother.Random(),
                 WordMother.Random(),
                 WordMother.Random(),
-                MotherCreator.Random().Enum<EmployeeType>(),
+                i % 2 == 0 ? EmployeeType.Dispatcher : MotherCreator.Random().Enum<EmployeeType>(),
                 Guid.NewGuid().ToString()
             );
 
