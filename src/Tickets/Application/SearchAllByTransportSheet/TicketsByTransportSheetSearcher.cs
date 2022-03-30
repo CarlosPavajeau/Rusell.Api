@@ -13,6 +13,6 @@ public class TicketsByTransportSheetSearcher
 
     public async Task<IEnumerable<Ticket>> SearchAllByTransportSheet(TransportSheetId transportSheetId)
     {
-        return await _repository.SearchAll(x => x.TransportSheetId == transportSheetId);
+        return await _repository.SearchAll(x => x.TransportSheetId.Value == transportSheetId.Value);
     }
 }
