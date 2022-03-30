@@ -11,12 +11,12 @@ namespace Rusell.Tickets.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/tickets/transport-sheets/{transportSheetId:guid}/tickets")]
-public class TicketsPostController : ControllerBase
+public class PostController : ControllerBase
 {
-    private readonly ILogger<TicketsPostController> _logger;
+    private readonly ILogger<PostController> _logger;
     private readonly IMediator _mediator;
 
-    public TicketsPostController(ILogger<TicketsPostController> logger, IMediator mediator)
+    public PostController(ILogger<PostController> logger, IMediator mediator)
     {
         _logger = logger;
         _mediator = mediator;
