@@ -9,11 +9,11 @@ namespace Rusell.Tickets.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/tickets/transport-sheets/{transportSheetId:guid}/tickets")]
-public class TicketsByTransportSheetGetController : ControllerBase
+public class ByTransportSheetGetController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public TicketsByTransportSheetGetController(IMediator mediator)
+    public ByTransportSheetGetController(IMediator mediator)
     {
         _mediator = mediator;
     }

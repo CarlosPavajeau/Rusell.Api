@@ -9,11 +9,11 @@ namespace Rusell.Tickets.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/tickets/by-client/{clientId}")]
-public class TicketsByClientGetController : ControllerBase
+public class ByClientGetController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public TicketsByClientGetController(IMediator mediator)
+    public ByClientGetController(IMediator mediator)
     {
         _mediator = mediator;
     }
